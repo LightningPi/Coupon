@@ -26,7 +26,7 @@
   
   $(document).ready(function(){
 
-		var longid = sessionStorage.getItem('longid');//接收store_context頁面的longid session
+		var longid = sessionStorage.getItem('longid');//接收store_context.html頁面，的商家主鍵longid session，用來搜尋商家長期優惠
 
 		$.ajax({  //用ajax接收
         url:'http://伺服器IP/app_php/long.php?id='+longid+'',  //接收的php檔案網址
@@ -34,16 +34,16 @@
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
         success:function(data,status){  //成功時跑的function
-         // $('#onecontent').empty();
+        
 		  $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
          	
-			var long='<p>'+item.content+'</p><br/>';
+			var long='<p>'+item.content+'</p><br/>';//長期優惠內容，一筆一筆顯示
 
-			$('#longshow').append(long);
+			$('#longshow').append(long);//顯示在id為longshow的div
 
 
           });
-		  //$('#popupCloseRight').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+		  
         },
         error:function(){ //錯誤時跑的function
         longshow.text('There was an error loading the data.');  //出錯時顯示的文字
