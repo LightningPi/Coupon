@@ -18,13 +18,14 @@
 
 <body>
 
-
+	//優惠券列表
+	
 <div data-role="page"  data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
 <script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
     $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
       
       $.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/bi/sql_view.php',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/bi/sql_view.php',  //接收的php檔案網址，撈取所有優惠券
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -37,12 +38,12 @@
 				+'<p>優惠商家:'+item.name+'</p>'  //優惠店家欄位
 				+'<p>優惠開始日期:'+item.timestart+'</p>'  //開始時間欄位
 				+'<p>優惠結束日期:'+item.timeend+'</p>'  //結束時間欄位
-				+'</a><a href="../li/cherish_coupon.html" onclick="cherish('+item.coupon_id+')" data-rel="dialog" data-transition="pop">我要收藏</a>'
+				+'</a><a href="../li/cherish_coupon.html" onclick="cherish('+item.coupon_id+')" data-rel="dialog" data-transition="pop">我要收藏</a>'	//收藏優惠按鈕，按下時觸發cherish() function，設定想收藏的優惠券主鍵cherishid session
 			    +'</li>';
             
 			$('#couponlist').append(out);   //#couponlist是找id為couponlist的標籤(下方有個ul標籤的id為couponlist)。.append(out)是把out的內容接到id為couponlist的標籤裡     
           });
-		  $('#couponlist').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+		  $('#couponlist').listview('refresh');		//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
         },
         error:function(){ //錯誤時跑的function
         couponlist.text('There was an error loading the data.');  //出錯時顯示的文字
@@ -51,12 +52,12 @@
     });
 	
 	function pagesend(cid){
-		sessionStorage.setItem('cid',cid);//設定優惠券cid session
+		sessionStorage.setItem('cid',cid);	//設定優惠券主鍵cid session，供優惠內容coupon_context.html顯示使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function cherish(cherishid){
-		sessionStorage.setItem('cherishid',cherishid);//設定收藏優惠券 cherishid session
+		sessionStorage.setItem('cherishid',cherishid);	//設定想收藏的優惠券主鍵 cherishid session，供收藏優惠券cherish_coupon.html收藏使用
 		//localStorage.setItem("tid",sid);
 		}
 
