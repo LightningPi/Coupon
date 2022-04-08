@@ -26,7 +26,7 @@
 
 	$(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
-	$("#rsform").submit(function(){
+	$("#rsform").submit(function(){	//當按下確定送出按鈕時，執行rs() function
 
 			rs();
 			return false;
@@ -36,15 +36,15 @@
 
 	function rs(){
 
-		var rs_name = $("#rs_name").val();
+		var rs_name = $("#rs_name").val();	//讀取稱呼輸入值
 
-		var rs_email = $("#rs_email").val();
+		var rs_email = $("#rs_email").val();	//讀取信箱輸入值
 
-		var rs_title = $("#rs_title").val();
+		var rs_title = $("#rs_title").val();	//讀取標題輸入值
 
-		var rs_content = $("#rs_content").val();
+		var rs_content = $("#rs_content").val();	//讀取內容輸入值
 
-		if(rs_name == ""){
+		if(rs_name == ""){		//如果稱呼為空值，提示請輸入稱呼
 
 			$("#rs_check").text("請輸入稱呼");
 			$("#rs_name").focus();
@@ -52,7 +52,7 @@
 		
 			}
 	
-		if(rs_email == ""){
+		if(rs_email == ""){		//如果信箱為空值，提示請輸入信箱
 
 			$("#rs_check").text("請輸入信箱");
 			$("#rs_email").focus();
@@ -60,7 +60,7 @@
 
 			}
 
-		if(rs_title == ""){
+		if(rs_title == ""){		//如果標題為空值，提示請輸入標題
 
 			$("#rs_check").text("請輸入標題");
 			$("#rs_title").focus();
@@ -68,7 +68,7 @@
 		
 			}
 
-		if(rs_content == ""){
+		if(rs_content == ""){		//如果內容為空值，提示請輸入內容
 
 			$("#rs_check").text("請輸入內容");
 			$("#rs_content").focus();
@@ -80,7 +80,7 @@
 
 	$.ajax({  //用ajax接收
 
-        url:'http://伺服器IP/app_php/report_store.php?rs_name='+rs_name+'&rs_email='+rs_email+'&rs_title='+rs_title+'&rs_content='+rs_content+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/report_store.php?rs_name='+rs_name+'&rs_email='+rs_email+'&rs_title='+rs_title+'&rs_content='+rs_content+'',  //接收的php檔案網址，以GET傳送稱呼、信箱、標題、內容輸入值
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -88,15 +88,15 @@
 
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
             
-			var rs_out='<p>'+item.rsgood+'</p>';
+			var rs_out='<p>'+item.rsgood+'</p>';      //成功時，伺服器回傳：回報成功
             
 			$('#rs_check').empty();
 			$('#rs_result').empty();
-			$('#rs_result').append(rs_out);   //#rs_result是找id為rs_result的標籤(下方有個ul標籤的id為rs_result)。.append(registerout)是把registerout的內容接到id為report_result的標籤裡   
+			$('#rs_result').append(rs_out);   //#rs_result是找id為rs_result的標籤(下方有個標籤的id為rs_result)。.append(registerout)是把registerout的內容接到id為report_result的標籤裡   
 
 
           });
-		  //$('#report_result').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+		  
         },
         error:function(){ //錯誤時跑的function
         rs_check.text('There was an error loading the data.');  //出錯時顯示的文字
