@@ -24,21 +24,21 @@
 <script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
 
   
-  $(document).ready(function(){
+  $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
 	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入
 
 			document.location.href="login.html";// 未登入，回登入頁
 		
-	}else{
+	}else{	//登入驗證 如果session memberid存在 = 已登入
 	
-		var memberid = sessionStorage.getItem('memberid');//接收login頁面的memberid session
+		var memberid = sessionStorage.getItem('memberid');//接收登入login頁面，的會員主鍵memberid session
 
-		var cherishid = sessionStorage.getItem('cherishid');//接收coupon_context，或couponlist頁面，的cherishid session
+		var cherishid = sessionStorage.getItem('cherishid');//接收coupon_context.html、或couponlist.html頁面，按下收藏優惠時，傳送的優惠券主鍵cherishid session
 
 	$.ajax({  //用ajax接收
 
-        url:'http://伺服器IP/app_php/cherish_coupon.php?mid='+memberid+'&cid='+cherishid+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/cherish_coupon.php?mid='+memberid+'&cid='+cherishid+'',  //接收的php檔案網址，傳送會員主鍵memberid、優惠券主鍵cherishid
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
