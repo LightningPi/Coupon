@@ -43,7 +43,7 @@
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
         success:function(data,status){  //成功時跑的function
-        
+        	//成功時，已寫入資料庫，div id：cherish_coupon直接顯示已收藏至集券冊
         },
         error:function(){ //錯誤時跑的function
         	cherish_coupon.text('There was an error loading the data.');  //出錯時顯示的文字
