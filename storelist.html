@@ -29,7 +29,7 @@
         timeout:5000,
         success:function(data,status){  //成功時跑的function
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
-            //localStorage.setItem("tid", item.store_id);
+            
 
 			var out='<li><a href="store_context.html" onclick="storecontext('+item.store_id+')">'  //設定out變數的內容。注意：item.資料庫欄位名稱(如name)，就會把name欄位的值加進來(欄位名稱需在php檔中，有從資料庫撈出來的才有用)。+是連接符號，和java一樣，這邊+號這麼多是在設定它顯示的方式。
 				+'<img src="'+item.pic+'" height="200%" width="150%" />'          //這邊都是jquery-mobile的語法，下方ul中需要包li，其他標籤為每個li裡的標籤
@@ -50,12 +50,12 @@
     });
 	
 	function storecontext(sid){
-		sessionStorage.setItem('sid',sid);//設定sid session
+		sessionStorage.setItem('sid',sid);//設定商家主鍵sid session，供store_context使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function cherishstore(cherishstore){
-		sessionStorage.setItem('cherishstore',cherishstore);//設定收藏商店 cherishstore session
+		sessionStorage.setItem('cherishstore',cherishstore);//設定收藏商店 cherishstore session，供cherish_store使用
 		//localStorage.setItem("tid",sid);
 		}
 
