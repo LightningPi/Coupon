@@ -24,7 +24,7 @@
 
     $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
-	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入，底部區塊：顯示登入按鈕。 如果已登入，底部區塊：顯示登出按鈕
+	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入
 
 			document.location.href="login.html";// 未登入，回登入頁
 		
@@ -66,12 +66,12 @@
     });
 	
 	function pagesend(cid){
-		sessionStorage.setItem('cid',cid);//設定優惠券cid session
+		sessionStorage.setItem('cid',cid);//設定優惠券cid session，供coupon_context.html使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function deletecoupon(deletecoupon){
-		sessionStorage.setItem('deletecoupon',deletecoupon);//設定刪除已收藏優惠券 deletecoupon session
+		sessionStorage.setItem('deletecoupon',deletecoupon);//設定刪除已收藏優惠券 deletecoupon session，供delete_coupon.html使用
 		//localStorage.setItem("tid",sid);
 		}
 
