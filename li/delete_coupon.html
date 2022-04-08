@@ -26,15 +26,15 @@
   
   $(document).ready(function(){
 
-	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入，底部區塊：顯示登入按鈕。 如果已登入，底部區塊：顯示登出按鈕
+	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入
 
 			document.location.href="login.html";// 未登入，回登入頁
 		
 	}else{
 	
-		var memberid = sessionStorage.getItem('memberid');//接收login頁面的memberid session
+		var memberid = sessionStorage.getItem('memberid');//接收登入login.html頁面，的memberid session
 
-		var deletecouponid = sessionStorage.getItem('deletecoupon');//接收coupon_context頁面的cherishid session
+		var deletecouponid = sessionStorage.getItem('deletecoupon');//接收集券冊couponcollect.html頁面，的deletecoupon session
 
 	$.ajax({  //用ajax接收
 
