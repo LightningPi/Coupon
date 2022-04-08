@@ -25,7 +25,7 @@
 <script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
  
   
-  $(document).ready(function(){
+  $(document).ready(function(){		  //這一行是指當整個網頁檔案都載入時，才會執行此function
 		var cid = sessionStorage.getItem('cid');	//接收優惠券列表couponlist.html頁面，的優惠券主鍵cid session
 
 		$.ajax({  //用ajax接收
@@ -47,7 +47,7 @@
 
 			  //顯示優惠內容
 			  
-			$('#coupon').append(top);
+			$('#coupon').append(top);		//top內容，加入id為coupon的div裡
 
 			
 
@@ -58,10 +58,10 @@
 			
 			  //打電話、收藏優惠券、問題回報、店家位置功能
 
-			$('#detail').append(detail);
+			$('#detail').append(detail);		//detail內容，加入id為detail的div裡
                 
           });
-		  //$('#popupCloseRight').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+		  
         },
         error:function(){ //錯誤時跑的function
         coupon.text('There was an error loading the data.');  //出錯時顯示的文字
@@ -77,7 +77,7 @@
 
 
 	function address(address){
-		sessionStorage.setItem('address',address);	//設定店家主鍵address session，供road.html搜尋店家地址使用
+		sessionStorage.setItem('address',address);	//設定店家主鍵address session，供road.html，搜尋店家地址使用
 		//localStorage.setItem("tid",sid);
 		}
 					 
