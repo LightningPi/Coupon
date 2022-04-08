@@ -17,15 +17,14 @@
 </head>
 
 <body>
-	
-	商家列表
+	//商家列表
 
 <div data-role="page"  data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
 <script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
     $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
       
       $.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/sql_view.php',  //接收的php檔案網址，，撈取所有店家
+        url:'http://伺服器IP/app_php/sql_view.php',  //接收的php檔案網址，撈取所有店家
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -52,12 +51,12 @@
     });
 	
 	function storecontext(sid){
-		sessionStorage.setItem('sid',sid);	//設定商家主鍵sid session，供店家內容store_context使用
+		sessionStorage.setItem('sid',sid);	//設定商家主鍵sid session，供店家內容store_context.html，搜尋店家內容使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function cherishstore(cherishstore){
-		sessionStorage.setItem('cherishstore',cherishstore);	//設定想收藏的商店 cherishstore session，供收藏店家cherish_store.html收藏使用
+		sessionStorage.setItem('cherishstore',cherishstore);	//設定想收藏的商店 cherishstore session，供收藏店家cherish_store.html，收藏店家使用
 		//localStorage.setItem("tid",sid);
 		}
 
