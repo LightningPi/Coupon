@@ -26,33 +26,31 @@
 
 $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
-		var address = sessionStorage.getItem('address');//接收coupon_context頁面的saddress session
+		var address = sessionStorage.getItem('address');//接收coupon_context.html頁面，的商家主鍵address session，用來搜尋商家地址
 
 	$.ajax({  //用ajax接收
 
-        url:'http://伺服器IP/app_php/address.php?id='+address+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/address.php?id='+address+'',  //接收的php檔案網址，傳送商家主鍵address
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
         success:function(data,status){  //成功時跑的function
-         // $('#onecontent').empty();
+         
 		  $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
          	
-			var out='<h1>'+item.address+'</h1>';
+			var out='<h1>'+item.address+'</h1>';  //顯示商家地址
 
 			$('#road').append(out);
                 
           });
-		  //$('#popupCloseRight').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+		  
         },
         error:function(){ //錯誤時跑的function
         road.text('There was an error loading the data.');  //出錯時顯示的文字
         }
       });
 
-		//var out='<p>'+address+'</p>';
-
-		//$('#road').append(out);
+	
 
 });
 
