@@ -26,7 +26,7 @@
   
   $(document).ready(function(){
 
-	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入，底部區塊：顯示登入按鈕。 如果已登入，底部區塊：顯示登出按鈕
+	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入
 
 			document.location.href="login.html";// 未登入，回登入頁
 		
@@ -34,7 +34,7 @@
 	
 		var memberid = sessionStorage.getItem('memberid');//接收login頁面的memberid session
 
-		var cherishstore = sessionStorage.getItem('cherishstore');//接收coupon_context頁面的cherishid session
+		var cherishstore = sessionStorage.getItem('cherishstore');//接收store_context或storelist頁面的cherishstore session
 
 	$.ajax({  //用ajax接收
 
@@ -43,10 +43,7 @@
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
         success:function(data,status){  //成功時跑的function
-         // $('#onecontent').empty();
-		  
-        
-		  //$('#popupCloseRight').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+         
         },
         error:function(){ //錯誤時跑的function
         	cherish_store.text('There was an error loading the data.');  //出錯時顯示的文字
