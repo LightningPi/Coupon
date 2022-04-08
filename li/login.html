@@ -26,7 +26,7 @@
 
 	$(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
-	$("#loginform").submit(function(){
+	$("#loginform").submit(function(){	//當按下註冊按鈕時，執行login() function
 
 			login();
 			return false;
@@ -36,10 +36,10 @@
 
 	function login(){
 
-		var ac = $("#ac").val();
-		var pw = $("#pw").val();
+		var ac = $("#ac").val();	//讀取帳號輸入值
+		var pw = $("#pw").val();	//讀取密碼輸入值
 
-		if (ac == ""){
+		if (ac == ""){		//如果帳號為空值，提示請輸入帳號
 
 			$("#check").text("請輸入帳號");
 			$("#ac").focus();
@@ -47,7 +47,7 @@
 		
 			}
 	
-		if(pw == ""){
+		if(pw == ""){		//如果密碼為空值，提示請輸入密碼
 
 			$("#check").text("請輸入密碼");
 			$("#pw").focus();
@@ -55,7 +55,7 @@
 
 			}
 
-	$.ajax({  //用ajax接收
+	$.ajax({  //用ajax接收		//如果帳號密碼都有輸入，驗證帳密是否錯誤
 
         url:'http://伺服器IP/app_php/login.php?ac='+ac+'&pw='+pw+'',  //接收的php檔案網址
         dataType:'jsonp',  //以jsonp方式接收
@@ -65,7 +65,7 @@
 
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
             
-		if(item.member_id == "信箱或密碼輸入錯誤"){
+		if(item.member_id == "信箱或密碼輸入錯誤"){		//如果信箱或密碼輸入錯誤，提示輸入錯誤
 
 			var out='<p>'+item.member_id+'</p>';
             
@@ -75,7 +75,7 @@
 
 		}else{
 
-			member(item.member_id);//呼叫會員memberid session
+			member(item.member_id);//呼叫會員memberid session		//如果帳密驗證成功，呼叫member() function，設定memberid session
 
 			document.location.href="../index.html";//登入成功回首頁    
 
