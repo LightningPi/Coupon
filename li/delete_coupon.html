@@ -24,26 +24,26 @@
 <script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
 
   
-  $(document).ready(function(){
+  $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
 	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入
 
-			document.location.href="login.html";// 未登入，回登入頁
+			document.location.href="login.html";	// 未登入，回登入頁
 		
-	}else{
+	}else{	//登入驗證 如果session memberid存在 = 已登入
 	
-		var memberid = sessionStorage.getItem('memberid');//接收登入login.html頁面，的memberid session
+		var memberid = sessionStorage.getItem('memberid');	//接收登入login.html頁面，的memberid session
 
-		var deletecouponid = sessionStorage.getItem('deletecoupon');//接收集券冊couponcollect.html頁面，的deletecoupon session
+		var deletecouponid = sessionStorage.getItem('deletecoupon');	//接收集券冊couponcollect.html頁面，想刪除的優惠券主鍵deletecoupon session
 
 	$.ajax({  //用ajax接收
 
-        url:'http://伺服器IP/app_php/delete_coupon.php?mid='+memberid+'&cid='+deletecouponid+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/delete_coupon.php?mid='+memberid+'&cid='+deletecouponid+'',  //接收的php檔案網址，以GET方式傳送會員主鍵memberid、想刪除的優惠券主鍵deletecoupon
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
         success:function(data,status){  //成功時跑的function
-  
+  		//成功時，已刪除，div id：delete_coupon直接顯示已刪除優惠券
         },
         error:function(){ //錯誤時跑的function
         	delete_coupon.text('There was an error loading the data.');  //出錯時顯示的文字
