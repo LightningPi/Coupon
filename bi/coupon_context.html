@@ -44,15 +44,18 @@
             			+'<p>優惠開始日期：'+item.timestart+'</p>' 
             			+'<p>優惠結束日期：'+item.timeend+'</p>';
 
+			  //顯示優惠內容
+			  
 			$('#coupon').append(top);
 
-
+			
 
 			var detail = '<div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:144px"><a href="tel:'+item.tel+'"><img src="http://伺服器IP/app_php/ig/phone.bmp"></a></div></div>'
 				+'<div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:144px"><a href="../li/cherish_coupon.html" onclick="cherish('+item.coupon_id+')" data-rel="dialog" data-transition="pop"><img src="http://伺服器IP/app_php/ig/star.bmp"></a></div></div>'
             			+'<div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:144px"><a href="../li/report_store.html"><img src="http://伺服器IP/app_php/ig/mail.PNG"></a></div></div>'
             			+'<div class="ui-block-d"><div class="ui-bar ui-bar-e" style="height:144px"><a href="../li/road.html" onclick="address('+item.store_id+')"><img src="http://伺服器IP/app_php/ig/map.bmp"></a></div></div>';
-
+			
+			  //打電話、收藏優惠券、問題回報、店家位置功能
 
 			$('#detail').append(detail);
                 
