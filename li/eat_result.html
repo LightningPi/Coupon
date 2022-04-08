@@ -33,7 +33,7 @@
         success:function(data,status){  //成功時跑的function
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
             
-			var out='<center><h1>'+item.name+'</h1></center>'
+			var out='<center><h1>'+item.name+'</h1></center>'	//今天吃什麼功能：隨機產生一筆優惠內容
                 +'<center><h3>'+item.content+'</h3></center>'
 		+'<center><img src="'+item.pic+'" height="300px" width="280px"/></center><br/>'
                 +'<p>使用說明：購買時出示此優惠券即可獲得上述優惠</p>'
@@ -50,9 +50,12 @@
 				+'<div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:144px"><a href="cherish_coupon.html" onclick="cherish('+item.coupon_id+')" data-rel="dialog" data-transition="pop"><img src="http://伺服器IP/app_php/ig/star.bmp"></a></div></div>'
             			+'<div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:144px"><a href="report_store.html"><img src="http://伺服器IP/app_php/ig/mail.PNG"></a></div></div>'
             			+'<div class="ui-block-d"><div class="ui-bar ui-bar-e" style="height:144px"><a href="road.html" onclick="address('+item.store_id+')"><img src="http://伺服器IP/app_php/ig/map.bmp"></a></div></div>';
+			
 
-
+		  	//優惠內容打電話、珍藏優惠、商家位置功能
+		  
 			$('#detail').append(detail);
+		  	//將detail結果，接到id為detail的div
  
           });
 		  //$('#eat_result').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
@@ -100,7 +103,6 @@
 
   </center>
 
-       <!-- <a href="long.html" data-rel="dialog">Open dialog</a>  -->
   </div><!--中間區塊結束-->
   
   <div data-role="footer" data-position="fixed"><!--//下方區塊div-->
