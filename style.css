@@ -1,0 +1,103 @@
+body {margin:0; padding:0; background:url(images/wr_body.gif) top left;}
+table, td {border-collapse:collapse;}
+table, td, img {border:0;}
+form, td {margin:0; padding:0;}
+td{font:14px/16px tahoma, arial, helvetica, sans-serif; color:#292727; vertical-align:top;  text-align:left;}
+
+a{ color:#292727;}
+a:hover{text-decoration:none;}
+
+ul {list-style:none; padding:0;}
+
+
+
+.r1 ul { margin:0; padding:0; list-style:none;}
+.r1 li { background:url(images/r1.gif) center left no-repeat; margin:0 0 0 0; padding:0 0 0 11px;}
+.r1 li a {line-height:16px; color:#FD7914; text-decoration:underline;}
+.r1 li a:hover { text-decoration:none; color:#FD7914;}
+
+
+/*header*/
+.indent_logo{ height:130px;}
+.indent_logo img{ margin:27px 0 0 22px;}
+.menu{ height:45px;}
+.top_line{ height:0px; width:100%;  background:url(images/spacer.gif);}
+.big_foto{height:190px; width:180px; padding-top:1px;}
+
+/*footer*/
+.footer{ color:#828282; text-align:center; padding:20px 0 11px 0;}
+.footer a{ color:#828282; text-decoration:underline}
+.footer a:hover{ color:#828282; text-decoration:none}
+.footer span{ color:#5F5C5C; word-spacing:21px;}
+.footer span a{ color:#5F5C5C; text-decoration:none; word-spacing:normal;}
+.footer span a:hover{ color:#5F5C5C; text-decoration:underline;}
+
+
+
+
+/*wrapper*/
+.wr_white { width:100%;}
+.wr_white .t { background:#FFFFFF url(images/m2-l-t.gif) no-repeat left top;}
+.wr_white .b { background:url(images/m2-r-t.gif) no-repeat right top;}
+.wr_white .l { background:url(images/m2-l-b.gif) no-repeat left bottom;}
+.wr_white .r { background:url(images/m2-r-b.gif) no-repeat right bottom;}
+
+.wr_white_dark { width:100%;}
+.wr_white_dark .t { background:#F9FAF6 url(images/m2-l-t2.gif) no-repeat left top;}
+.wr_white_dark .b { background:url(images/m2-r-t2.gif) no-repeat right top;}
+.wr_white_dark .l { background:url(images/m2-l-b2.gif) no-repeat left bottom;}
+.wr_white_dark .r { background:url(images/m2-r-b2.gif) no-repeat right bottom;}
+
+.wr_white li { background:url(images/wr_white_x.gif) bottom left repeat-x; margin:0 0 0 0; padding:0 0 2px 0; width:155px;}
+.wr_white li a { background:url(images/wr_white_bgr.gif) center left no-repeat; line-height:22px; color:#4E4D4D; text-decoration:none; padding-left:17px;}
+.wr_white li a:hover { text-decoration:none; color:#D6300D;}
+
+/**/
+
+.wr_green { width:100%;}
+.wr_green .t { background:#DFE3CF url(images/m2-l-t1.gif) no-repeat left top;}
+.wr_green .b { background:url(images/m2-r-t1.gif) no-repeat right top;}
+.wr_green .l { background:url(images/m2-l-b1.gif) no-repeat left bottom;}
+.wr_green .r { background:url(images/m2-r-b1.gif) no-repeat right bottom;}
+
+.wr_green li { background:url(images/list_red.gif) top left no-repeat; margin:0 0 0 0; padding:0 0 0 13px;}
+.wr_green li a {line-height:24px; color:#292727; text-decoration:underline;}
+.wr_green li a:hover { text-decoration:none; color:#292727}
+
+
+/*content*/
+.bgr1{background:none !important}
+.h{ background:url(images/h.gif) top left no-repeat; height:17px;}
+.h img{ margin:0 0 0 25px;}
+
+.img1 img{ margin-right:7px;}
+
+strong a{ color:#3081AB;  background:url(images/marker.gif) no-repeat left top; background-position:0 3px; padding-left:10px; text-decoration:none; font-size:9px; text-transform:uppercase; font-family:Verdana, Arial, Helvetica, sans-serif}
+strong a:hover{ text-decoration:none; color:#D6300D;}
+
+.col_2 strong a{ color:#D6300D;  background:url(images/marker1.gif) no-repeat left top; background-position:0 3px; padding-left:10px; text-decoration:none; font-size:9px; text-transform:uppercase; font-family:Verdana, Arial, Helvetica, sans-serif}
+.col_2 strong a:hover{ text-decoration:none; color:#3081AB;}
+
+.line_x{ background:url(images/line_x.gif) top left repeat-x; width:600px; height:1px; margin:9px 0 10px 0;}
+
+.text1{ line-height:14px;}
+.text1 span{ font-size:9px; color:#3081AB;}
+.text1 span img{ vertical-align:middle; margin:0 7px 0 0;}
+
+.indent_img{width:600px; font-size:14px; font-stretch:notmal; font-family:"º–∑¢≈È";}
+.indent_img img{margin:0 20px 0 5px; float:left}
+.link{padding:13px 0 0 0; text-align:right;}
+
+.text2{padding:7px 31px 16px 15px; color:#4E4D4D;}
+.text2 div{ margin-top:11px;}
+.text2 a{ color:#D6300D; text-decoration:underline}
+.text2 a:hover{ color:#D6300D; text-decoration:none}
+.text2 strong{ display:block;}
+
+
+
+
+
+
+
+#content .inner_copy {border:0;color:#f00;float:left;width:50%!important;margin:-202px 0 0 0;overflow:hidden;line-height:0;padding:0;font-size:12px}

@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html><!--HTML 5宣告-->
+<html>
+<head>
+
+  <meta http-equiv="Content-Language" content="zh-tw">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width;" /><!--initial-scale=1表示螢幕初始大小為100%。maximum-scale=1表示螢幕最大為100%。minimum-scale=1表示螢幕最小為100%(不可縮)。 width這邊的設定為依照裝置螢幕的大小而調整。-->
+
+  <link rel="stylesheet" type="text/css" href="../jquery.mobile-1.2.0.min.css" /> <!--引用jquery-mobile的css-->      
+  <script type="text/javascript" src="../cordova-2.0.0.js"></script> <!--引用phonegap的javascript-->
+  <script type="text/javascript" src="../jquery-1.8.2.min.js"></script> <!--引用jquery的javascript-->
+  <script type="text/javascript" src="../jquery.mobile-1.2.0.min.js"></script> <!--引用jquery.mobile的javascript-->
+
+	<!--一起用的javascript css放在<head>和</head>裡-->
+
+  <title></title><!--這個設定在手機上沒效果-->
+</head>
+
+<body>
+
+
+<div data-role="page"  data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
+
+<script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
+
+
+	$(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
+
+	$("#loginform").submit(function(){
+
+			login();
+			return false;
+					});
+
+	});
+
+	function login(){
+
+		var ac = $("#ac").val();
+		var pw = $("#pw").val();
+
+		if (ac == ""){
+
+			$("#check").text("請輸入帳號");
+			$("#ac").focus();
+			return false;
+		
+			}
+	
+		if(pw == ""){
+
+			$("#check").text("請輸入密碼");
+			$("#pw").focus();
+			return false;
+
+			}
+
+	$.ajax({  //用ajax接收
+
+        url:'http://伺服器IP/app_php/login.php?ac='+ac+'&pw='+pw+'',  //接收的php檔案網址
+        dataType:'jsonp',  //以jsonp方式接收
+        jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
+        timeout:5000,
+        success:function(data,status){  //成功時跑的function
+
+          $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
+            
+		if(item.member_id == "信箱或密碼輸入錯誤"){
+
+			var out='<p>'+item.member_id+'</p>';
+            
+			$('#check').empty();
+			$('#loginresult').empty();
+			$('#loginresult').append(out);   //#loginresult是找id為loginresult的標籤(下方有個ul標籤的id為loginresult)。.append(out)是把out的內容接到id為loginresult的標籤裡   
+
+		}else{
+
+			member(item.member_id);//呼叫會員memberid session
+
+			document.location.href="../index.html";//登入成功回首頁    
+
+  
+		}
+
+
+          });
+		  //$('#loginresult').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+        },
+        error:function(){ //錯誤時跑的function
+        check.text('There was an error loading the data.');  //出錯時顯示的文字
+        }
+      });
+
+
+
+
+
+	}
+
+	function member(memberid){
+		sessionStorage.setItem('memberid',memberid);//設定會員登入成功 memberid session
+		//localStorage.setItem("tid",sid);
+		}
+
+		
+</script>  <!--這頁專用的javascript語法結尾-->     
+
+	
+  <div data-role="header"   data-position="fixed"><!--//上方區塊div-->
+
+    <h1>會員登入</h1> <!--固定要用h1-->
+
+  </div><!--上方區塊結束-->
+  
+  <div data-role="content"><!--//中間區塊div (程式主要內容)-->
+
+
+	<form id="loginform" name="loginform">
+	
+		<label for="ac">信箱：</label>
+		<input type="text" name="ac" id="ac" value="" />
+		
+	        <label for="pw">密碼:</label>
+	        <input type="password" name="pw" id="pw" value="" />
+
+		<button type="submit" data-theme="c" name="submit" id="submit">確定送出</button>
+  
+	</form>	
+
+	<div id="loginresult">
+
+
+	</div>
+
+	<div id="check">
+
+
+	</div>
+
+	<a href="register.html" data-role="button">註冊會員</a>
+  
+  
+  </div><!--中間區塊結束-->
+  
+  <div data-role="footer" data-position="fixed"><!--//下方區塊div-->
+    <h4></h4> <!--固定要用h4-->
+
+  </div><!--下方區塊結束-->
+  
+</div> 
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html><!--HTML 5宣告-->
+<html>
+<head>
+
+  <meta http-equiv="Content-Language" content="zh-tw">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width;" /><!--initial-scale=1表示螢幕初始大小為100%。maximum-scale=1表示螢幕最大為100%。minimum-scale=1表示螢幕最小為100%(不可縮)。 width這邊的設定為依照裝置螢幕的大小而調整。-->
+
+  <link rel="stylesheet" type="text/css" href="../jquery.mobile-1.2.0.min.css" /> <!--引用jquery-mobile的css-->      
+  <script type="text/javascript" src="../cordova-2.0.0.js"></script> <!--引用phonegap的javascript-->
+  <script type="text/javascript" src="../jquery-1.8.2.min.js"></script> <!--引用jquery的javascript-->
+  <script type="text/javascript" src="../jquery.mobile-1.2.0.min.js"></script> <!--引用jquery.mobile的javascript-->
+
+	<!--一起用的javascript css放在<head>和</head>裡-->
+
+  <title></title><!--這個設定在手機上沒效果-->
+</head>
+
+<body>
+
+
+<div data-role="page"  data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
+
+<script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
+
+
+	$(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
+
+	$("#reportform").submit(function(){
+
+			report();
+			return false;
+					});
+
+	});
+
+	function report(){
+
+		var report_name = $("#report_name").val();
+
+		var report_email = $("#report_email").val();
+
+		var report_title = $("#report_title").val();
+
+		var report_content = $("#report_content").val();
+
+		if(report_name == ""){
+
+			$("#report_check").text("請輸入稱呼");
+			$("#report_name").focus();
+			return false;
+		
+			}
+	
+		if(report_email == ""){
+
+			$("#report_check").text("請輸入信箱");
+			$("#report_email").focus();
+			return false;
+
+			}
+
+		if(report_title == ""){
+
+			$("#report_check").text("請輸入標題");
+			$("#report_title").focus();
+			return false;
+		
+			}
+
+		if(report_content == ""){
+
+			$("#report_check").text("請輸入內容");
+			$("#report_content").focus();
+			return false;
+		
+			}
+	
+	
+
+	$.ajax({  //用ajax接收
+
+        url:'http://伺服器IP/app_php/report.php?report_name='+report_name+'&report_email='+report_email+'&report_title='+report_title+'&report_content='+report_content+'',  //接收的php檔案網址
+        dataType:'jsonp',  //以jsonp方式接收
+        jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
+        timeout:5000,
+        success:function(data,status){  //成功時跑的function
+
+          $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
+            
+			var report_out='<p>'+item.reportgood+'</p>';
+            
+			$('#report_check').empty();
+			$('#report_result').empty();
+			$('#report_result').append(report_out);   //#report_result是找id為report_result的標籤(下方有個ul標籤的id為report_result)。.append(registerout)是把registerout的內容接到id為report_result的標籤裡   
+
+
+          });
+		  //$('#report_result').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+        },
+        error:function(){ //錯誤時跑的function
+        report_check.text('There was an error loading the data.');  //出錯時顯示的文字
+        }
+      });
+
+
+
+
+
+	}
+
+		
+</script>  <!--這頁專用的javascript語法結尾-->     
+
+	
+	
+  <div data-role="header"   data-position="fixed"><!--//上方區塊div-->
+
+    <h1>問題回報</h1> <!--固定要用h1-->
+
+  </div><!--上方區塊結束-->
+  
+  <div data-role="content"><!--//中間區塊div (程式主要內容)-->
+
+
+	<form id="reportform" name="reportform">
+	
+		<label for="report_name">稱呼：</label>
+		<input type="text" name="report_name" id="report_name" value="" />
+		
+	        <label for="report_email">信箱：</label>
+	        <input type="text" name="report_email" id="report_email" value="" />
+	
+		<label for="report_title">標題：</label>
+		<input type="text" name="report_title" id="report_title" value="" />
+
+		<label for="report_content">內容：</label>
+		<textarea name="report_content" id="report_content"></textarea>
+		
+		<button type="submit" data-theme="c" name="report_submit" id="report_submit">確定送出</button>
+  
+	</form>	
+
+	<div id="report_result">
+
+
+	</div>
+
+	<div id="report_check">
+
+
+	</div>
+
+  
+  </div><!--中間區塊結束-->
+  
+  <div data-role="footer" data-position="fixed"><!--//下方區塊div-->
+    <h4></h4> <!--固定要用h4-->
+
+  </div><!--下方區塊結束-->
+  
+</div> 
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html><!--HTML 5宣告-->
+<html>
+<head>
+
+  <meta http-equiv="Content-Language" content="zh-tw">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width;" /><!--initial-scale=1表示螢幕初始大小為100%。maximum-scale=1表示螢幕最大為100%。minimum-scale=1表示螢幕最小為100%(不可縮)。 width這邊的設定為依照裝置螢幕的大小而調整。-->
+
+  <link rel="stylesheet" type="text/css" href="../jquery.mobile-1.2.0.min.css" /> <!--引用jquery-mobile的css-->      
+  <script type="text/javascript" src="../cordova-2.0.0.js"></script> <!--引用phonegap的javascript-->
+  <script type="text/javascript" src="../jquery-1.8.2.min.js"></script> <!--引用jquery的javascript-->
+  <script type="text/javascript" src="../jquery.mobile-1.2.0.min.js"></script> <!--引用jquery.mobile的javascript-->
+
+	<!--一起用的javascript css放在<head>和</head>裡-->
+
+  <title></title><!--這個設定在手機上沒效果-->
+</head>
+
+<body>
+
+
+<div data-role="page" data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
+	
+<script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
+
+    $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
+      
+      $.ajax({  //用ajax接收
+        url:'http://伺服器IP/app_php/eat_random_test.php',  //接收的php檔案網址
+        dataType:'jsonp',  //以jsonp方式接收
+        jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
+        timeout:5000,
+        success:function(data,status){  //成功時跑的function
+          $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
+            
+			var out='<center><h1>'+item.name+'</h1></center>'
+                +'<center><h3>'+item.content+'</h3></center>'
+		+'<center><img src="'+item.pic+'" height="300px" width="280px"/></center><br/>'
+                +'<p>使用說明：購買時出示此優惠券即可獲得上述優惠</p>'
+		+'<p>營業時間：'+item.time+'</p>'
+                +'<p>優惠開始日期：'+item.timestart+'</p>' 
+                +'<p>優惠截止日期：'+item.timeend+'</p>';
+            
+			$('#eat_result').append(out);   //#eat_result是找id為eat_result的標籤(下方有個ul標籤的id為eat_result)。.append(out)是把out的內容接到id為eat_result的標籤裡     
+
+
+
+
+			var detail = '<div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:144px"><a href="tel:'+item.tel+'"><img src="http://伺服器IP/app_php/ig/phone.bmp"></a></div></div>'
+				+'<div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:144px"><a href="cherish_coupon.html" onclick="cherish('+item.coupon_id+')" data-rel="dialog" data-transition="pop"><img src="http://伺服器IP/app_php/ig/star.bmp"></a></div></div>'
+            			+'<div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:144px"><a href="report_store.html"><img src="http://伺服器IP/app_php/ig/mail.PNG"></a></div></div>'
+            			+'<div class="ui-block-d"><div class="ui-bar ui-bar-e" style="height:144px"><a href="road.html" onclick="address('+item.store_id+')"><img src="http://伺服器IP/app_php/ig/map.bmp"></a></div></div>';
+
+
+			$('#detail').append(detail);
+ 
+          });
+		  //$('#eat_result').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+        },
+        error:function(){ //錯誤時跑的function
+        eat_result.text('There was an error loading the data.');  //出錯時顯示的文字
+        }
+      });
+    });
+
+
+	function cherish(cherishid){
+		sessionStorage.setItem('cherishid',cherishid);//設定收藏優惠券 cherishid session
+		//localStorage.setItem("tid",sid);
+		}
+
+
+	function address(address){
+		sessionStorage.setItem('address',address);//設定店家位置address session
+		//localStorage.setItem("tid",sid);
+		}
+		
+</script>  <!--這頁專用的javascript語法結尾-->     
+
+  <div data-role="header"   data-position="fixed"><!--//上方區塊div-->
+
+    <h1>今天吃什麼</h1> <!--固定要用h1-->
+
+  </div><!--上方區塊結束-->
+  
+  <div data-role="content"><!--//中間區塊div (程式主要內容)-->
+
+  <div id="eat_result">      	
+				                
+				 
+  </div>
+  
+
+  <center>
+
+  <div id="detail" class="ui-grid-c">
+
+			
+  </div>
+
+  </center>
+
+       <!-- <a href="long.html" data-rel="dialog">Open dialog</a>  -->
+  </div><!--中間區塊結束-->
+  
+  <div data-role="footer" data-position="fixed"><!--//下方區塊div-->
+
+    <h4><a href="login.html" data-role="button" data-theme="a">登入/註冊會員</a></h4> <!--固定要用h4-->
+
+  </div><!--下方區塊結束-->
+  
+</div> 
+
+</body>
+</html>

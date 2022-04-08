@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html><!--HTML 5宣告-->
+<html>
+<head>
+
+  <meta http-equiv="Content-Language" content="zh-tw">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width;" /><!--initial-scale=1表示螢幕初始大小為100%。maximum-scale=1表示螢幕最大為100%。minimum-scale=1表示螢幕最小為100%(不可縮)。 width這邊的設定為依照裝置螢幕的大小而調整。-->
+
+  <link rel="stylesheet" type="text/css" href="../jquery.mobile-1.2.0.min.css" /> <!--引用jquery-mobile的css-->      
+  <script type="text/javascript" src="../cordova-2.0.0.js"></script> <!--引用phonegap的javascript-->
+  <script type="text/javascript" src="../jquery-1.8.2.min.js"></script> <!--引用jquery的javascript-->
+  <script type="text/javascript" src="../jquery.mobile-1.2.0.min.js"></script> <!--引用jquery.mobile的javascript-->
+
+	<!--一起用的javascript css放在<head>和</head>裡-->
+
+  <title></title><!--這個設定在手機上沒效果-->
+</head>
+
+<body>
+
+
+<div data-role="page"  data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
+	
+<script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
+ 
+  
+				 
+</script>  <!--這頁專用的javascript語法結尾-->    
+
+	
+  <div data-role="header"   data-position="fixed"><!--//上方區塊div-->
+
+    <h1>今天吃什麼</h1> <!--固定要用h1-->
+
+  </div><!--上方區塊結束-->
+  
+  <div data-role="content"><!--//中間區塊div (程式主要內容)-->
+
+  <h3>有不知道要吃什麼的煩惱嗎?按下「今天吃什麼?」鈕，將隨機產生一筆優惠資訊，幫您決定今天吃什麼。</h3>
+
+  <center><a href="eat_result.html" data-role="button" data-inline="true">今天吃什麼?</a></center>
+  
+  </div><!--中間區塊結束-->
+  
+  <div data-role="footer" data-position="fixed"><!--//下方區塊div-->
+	
+	<h4><a href="login.html" data-role="button" data-theme="a">登入/註冊會員</a></h4>
+
+  </div><!--下方區塊結束-->
+  
+</div> 
+
+</body>
+</html>
