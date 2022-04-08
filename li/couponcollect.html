@@ -28,25 +28,27 @@
 
 			document.location.href="login.html";// 未登入，回登入頁
 		
-	}else{
+	}else{	//登入驗證 如果session memberid存在 = 已登入
 	
-		var memberid = sessionStorage.getItem('memberid');//接收login頁面的memberid session
+		var memberid = sessionStorage.getItem('memberid');	//接收登入login.html頁面，的會員主鍵memberid session
             
       $.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/coupon_collect.php?mid='+memberid+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/coupon_collect.php?mid='+memberid+'',  //接收的php檔案網址，以GET方式傳送會員主鍵memberid
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
         success:function(data,status){  //成功時跑的function
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
-					
+		  
+					//集券冊，一筆一筆顯示優惠	
+		  
 			var out='<li><a href="../bi/coupon_context.html" onclick="pagesend('+item.coupon_id+')">'  //設定out變數的內容。注意：item.資料庫欄位名稱(如name)，就會把name欄位的值加進來(欄位名稱需在php檔中，有從資料庫撈出來的才有用)。+是連接符號，和java一樣，這邊+號這麼多是在設定它顯示的方式。
 				+'<img src="'+item.pic+'" height="200%" width="150%" />' //這邊都是jquery-mobile的語法，下方ul中需要包li，其他標籤為每個li裡的標籤
 				+'<h2>'+item.title+'</h2>' //名稱欄位
 				+'<p>優惠商家:'+item.name+'</p>'  //優惠店家欄位
 				+'<p>優惠開始日期:'+item.timestart+'</p>'  //開始時間欄位
 				+'<p>優惠結束日期:'+item.timeend+'</p>'  //結束時間欄位
-				+'</a><a href="delete_coupon.html" onclick="deletecoupon('+item.coupon_id+')" data-rel="dialog" data-transition="pop">刪除收藏</a>'
+				+'</a><a href="delete_coupon.html" onclick="deletecoupon('+item.coupon_id+')" data-rel="dialog" data-transition="pop">刪除收藏</a>'  //刪除收藏按鈕，按下時觸發deletecoupon() function，設定想刪除的優惠券主鍵
 			    +'</li>';
             
 			$('#couponcollect').append(out);   //#couponcollect是找id為couponcollect的標籤(下方有個ul標籤的id為couponcollect)。.append(out)是把out的內容接到id為couponcollect的標籤裡     
@@ -66,12 +68,12 @@
     });
 	
 	function pagesend(cid){
-		sessionStorage.setItem('cid',cid);//設定優惠券cid session，供coupon_context.html使用
+		sessionStorage.setItem('cid',cid);	//設定優惠券主鍵cid session，供優惠內容coupon_context.html顯示使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function deletecoupon(deletecoupon){
-		sessionStorage.setItem('deletecoupon',deletecoupon);//設定刪除已收藏優惠券 deletecoupon session，供delete_coupon.html使用
+		sessionStorage.setItem('deletecoupon',deletecoupon);	//設定想刪除的優惠券主鍵 deletecoupon session，供刪除優惠券delete_coupon.html刪除使用
 		//localStorage.setItem("tid",sid);
 		}
 
