@@ -25,24 +25,24 @@
  
   
   $(document).ready(function(){
-		var cid = sessionStorage.getItem('cid');//接收couponlist頁面的cid session
+		var cid = sessionStorage.getItem('cid');	//接收優惠券列表couponlist.html頁面，的優惠券主鍵cid session
 
 		$.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/coupon_context.php?id='+cid+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/coupon_context.php?id='+cid+'',  //接收的php檔案網址，以GET方式傳送優惠券主鍵cid
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
         success:function(data,status){  //成功時跑的function
-         // $('#onecontent').empty();
+        
 		  $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
          	
-			var top='<center><h1>'+item.name+'</h1></center>'
-            			+'<center><h3>'+item.content+'</h3></center>'
-				+'<center><img src="'+item.pic+'" height="300px" width="280px"/></center><br/>'
+			var top='<center><h1>'+item.name+'</h1></center>'		//店家名稱欄位
+            			+'<center><h3>'+item.content+'</h3></center>'		//優惠券內容欄位
+				+'<center><img src="'+item.pic+'" height="300px" width="280px"/></center><br/>'		//優惠券圖片欄位
 	    			+'<p>使用說明：購買時出示此優惠券即可獲得上述優惠</p>'
-            			+'<p>營業時間：'+item.time+'</p>'
-            			+'<p>優惠開始日期：'+item.timestart+'</p>' 
-            			+'<p>優惠結束日期：'+item.timeend+'</p>';
+            			+'<p>營業時間：'+item.time+'</p>'	//營業時間欄位
+            			+'<p>優惠開始日期：'+item.timestart+'</p>' 	//優惠開始日期欄位
+            			+'<p>優惠結束日期：'+item.timeend+'</p>';	//優惠結束日期欄位
 
 			  //顯示優惠內容
 			  
@@ -70,13 +70,13 @@
 
 
 	function cherish(cherishid){
-		sessionStorage.setItem('cherishid',cherishid);//設定收藏優惠券 cherishid session
+		sessionStorage.setItem('cherishid',cherishid);	//設定想收藏的優惠券主鍵 cherishid session，供收藏優惠券cherish_coupon.html，收藏優惠券使用
 		//localStorage.setItem("tid",sid);
 		}
 
 
 	function address(address){
-		sessionStorage.setItem('address',address);//設定店家位置address session
+		sessionStorage.setItem('address',address);	//設定店家主鍵address session，供road.html搜尋店家地址使用
 		//localStorage.setItem("tid",sid);
 		}
 					 
