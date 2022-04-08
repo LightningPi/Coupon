@@ -38,7 +38,7 @@
 
 	$.ajax({  //用ajax接收
 
-        url:'http://伺服器IP/app_php/cherish_coupon.php?mid='+memberid+'&cid='+cherishid+'',  //接收的php檔案網址，傳送會員主鍵memberid、優惠券主鍵cherishid
+        url:'http://伺服器IP/app_php/cherish_coupon.php?mid='+memberid+'&cid='+cherishid+'',  //接收的php檔案網址，以GET方式傳送會員主鍵memberid、優惠券主鍵cherishid
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
