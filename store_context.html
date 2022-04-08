@@ -27,21 +27,22 @@
 $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
 
-	 var sid = sessionStorage.getItem('sid');//接收storelist頁面的sid session
+	 var sid = sessionStorage.getItem('sid');	//接收店家列表storelist.html頁面，的店家主鍵sid session
 
 		$.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/store_context.php?id='+sid+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/store_context.php?id='+sid+'',  //接收的php檔案網址，以GET方式傳送商家主鍵sid
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
         success:function(data,status){  //成功時跑的function
-         // $('#onecontent').empty();
+         
 		  $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
          
-			var top='<center><h1>'+item.name+'</h1></center>'
-				+'<center><img src="'+item.pic+'" height="170px"/></center><br/>'
+			var top='<center><h1>'+item.name+'</h1></center>'	//顯示店家名稱
+				+'<center><img src="'+item.pic+'" height="170px"/></center><br/>'	//顯示店家圖片
             			+item.introduce+'<br/>';
-
+			  			  
+			
 			$('#top').append(top);
 
 
@@ -55,10 +56,12 @@ $(document).ready(function(){  //這一行是指當整個網頁檔案都載入�
 				+'<button type="button" data-theme="a">分時優惠</button>'
 				+'</a></div>'
 				+'</div>';
-				
+			  
+			  //顯示長期、分時優惠按鈕
+		
+			  
 			$('#mid').append(long);
-	
-			
+		
 			var bot='<p>營業時間：'+item.time+'</p>' 
 				+'<p>公休時間：'+item.rest+'</p>' 
   				+'<center><div class="ui-grid-c">'
@@ -68,39 +71,42 @@ $(document).ready(function(){  //這一行是指當整個網頁檔案都載入�
 				+'<div class="ui-block-d"><div class="ui-bar ui-bar-e" style="height:144px"><a href="li/road.html" onclick="address('+item.store_id+')"><img src="http://伺服器IP/app_php/ig/map.bmp"></a></div></div>'
   				+'</div></center>';
 			
+			  //打電話、收藏店家、問題回報、店家位置功能
+			  
+			  
 			$('#bot').append(bot);
                 
           });
-		  //$('#popupCloseRight').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+		  
         },
         error:function(){ //錯誤時跑的function
         top.text('There was an error loading the data.');  //出錯時顯示的文字
         }
       });	   
 		   
-	 //alert("id="+id+"s_id="+s_id);
+	 
 });
 
 
 	function long(longid){
-		sessionStorage.setItem('longid',longid);//設定長期優惠商家id longid session
+		sessionStorage.setItem('longid',longid);	//設定店家主鍵longid session，供長期優惠long.html，搜尋商家長期優惠使用
 		//localStorage.setItem("tid",sid);
 		}
 
 
 	function time(timeid){
-		sessionStorage.setItem('timeid',timeid);//設定分時優惠商家id timeid session
+		sessionStorage.setItem('timeid',timeid);	//設定店家主鍵timeid session，供分時優惠long.html，搜尋商家分時優惠使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function cherishstore(cherishstore){
-		sessionStorage.setItem('cherishstore',cherishstore);//設定收藏商店 cherishstore session
+		sessionStorage.setItem('cherishstore',cherishstore);	//設定店家主鍵cherishstore session，供收藏商店cherish_store.html，收藏商店使用
 		//localStorage.setItem("tid",sid);
 		}
 
 
 	function address(address){
-		sessionStorage.setItem('address',address);//設定店家位置address session
+		sessionStorage.setItem('address',address);	//設定店家主鍵address session，供road.html，搜尋店家地址使用
 		//localStorage.setItem("tid",sid);
 		}
 	
