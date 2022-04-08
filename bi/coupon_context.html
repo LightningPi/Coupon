@@ -29,7 +29,7 @@
 		var cid = sessionStorage.getItem('cid');	//接收優惠券列表couponlist.html頁面，的優惠券主鍵cid session
 
 		$.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/coupon_context.php?id='+cid+'',  //接收的php檔案網址，以GET方式傳送優惠券主鍵cid
+        url:'http://伺服器IP/app_php/coupon_context.php?id='+cid+'',  //接收的php檔案網址，以GET方式傳送優惠券主鍵cid，撈取優惠券內容
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
