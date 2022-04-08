@@ -26,7 +26,7 @@
 
 	$(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
-	$("#reportform").submit(function(){
+	$("#reportform").submit(function(){	//當按下確定送出按鈕時，執行report() function
 
 			report();
 			return false;
@@ -36,15 +36,15 @@
 
 	function report(){
 
-		var report_name = $("#report_name").val();
+		var report_name = $("#report_name").val();	//讀取稱呼輸入值
 
-		var report_email = $("#report_email").val();
+		var report_email = $("#report_email").val();	//讀取信箱輸入值
 
-		var report_title = $("#report_title").val();
+		var report_title = $("#report_title").val();	//讀取標題輸入值
 
-		var report_content = $("#report_content").val();
+		var report_content = $("#report_content").val();	//讀取內容輸入值
 
-		if(report_name == ""){
+		if(report_name == ""){		//如果稱呼為空值，提示請輸入稱呼
 
 			$("#report_check").text("請輸入稱呼");
 			$("#report_name").focus();
@@ -52,7 +52,7 @@
 		
 			}
 	
-		if(report_email == ""){
+		if(report_email == ""){		//如果信箱為空值，提示請輸入信箱
 
 			$("#report_check").text("請輸入信箱");
 			$("#report_email").focus();
@@ -60,7 +60,7 @@
 
 			}
 
-		if(report_title == ""){
+		if(report_title == ""){		//如果標題為空值，提示請輸入標題
 
 			$("#report_check").text("請輸入標題");
 			$("#report_title").focus();
@@ -68,7 +68,7 @@
 		
 			}
 
-		if(report_content == ""){
+		if(report_content == ""){		//如果內容為空值，提示請輸入內容
 
 			$("#report_check").text("請輸入內容");
 			$("#report_content").focus();
@@ -80,7 +80,7 @@
 
 	$.ajax({  //用ajax接收
 
-        url:'http://伺服器IP/app_php/report.php?report_name='+report_name+'&report_email='+report_email+'&report_title='+report_title+'&report_content='+report_content+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/report.php?report_name='+report_name+'&report_email='+report_email+'&report_title='+report_title+'&report_content='+report_content+'',  //接收的php檔案網址，以GET傳送稱呼、信箱、標題、內容輸入值
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -88,15 +88,15 @@
 
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
             
-			var report_out='<p>'+item.reportgood+'</p>';
+			var report_out='<p>'+item.reportgood+'</p>';      //成功時，伺服器回傳：回報成功
             
 			$('#report_check').empty();
 			$('#report_result').empty();
-			$('#report_result').append(report_out);   //#report_result是找id為report_result的標籤(下方有個ul標籤的id為report_result)。.append(registerout)是把registerout的內容接到id為report_result的標籤裡   
+			$('#report_result').append(report_out);   //#report_result是找id為report_result的標籤(下方有個標籤的id為report_result)。.append(registerout)是把registerout的內容接到id為report_result的標籤裡   
 
 
           });
-		  //$('#report_result').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+		 
         },
         error:function(){ //錯誤時跑的function
         report_check.text('There was an error loading the data.');  //出錯時顯示的文字
