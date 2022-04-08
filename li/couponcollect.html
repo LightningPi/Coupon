@@ -49,7 +49,7 @@
 				+'<p>優惠商家:'+item.name+'</p>'  //優惠店家欄位
 				+'<p>優惠開始日期:'+item.timestart+'</p>'  //開始時間欄位
 				+'<p>優惠結束日期:'+item.timeend+'</p>'  //結束時間欄位
-				+'</a><a href="delete_coupon.html" onclick="deletecoupon('+item.coupon_id+')" data-rel="dialog" data-transition="pop">刪除收藏</a>'  //刪除收藏按鈕，按下時觸發deletecoupon() function，設定想刪除的優惠券主鍵
+				+'</a><a href="delete_coupon.html" onclick="deletecoupon('+item.coupon_id+')" data-rel="dialog" data-transition="pop">刪除收藏</a>'  //刪除已收藏優惠券按鈕，按下時觸發deletecoupon() function，設定想刪除的優惠券主鍵
 			    +'</li>';
             
 			$('#couponcollect').append(out);   //#couponcollect是找id為couponcollect的標籤(下方有個ul標籤的id為couponcollect)。.append(out)是把out的內容接到id為couponcollect的標籤裡     
