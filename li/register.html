@@ -26,7 +26,7 @@
 
 	$(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
-	$("#registerform").submit(function(){
+	$("#registerform").submit(function(){  //按下確定送出按鈕時，執行register() function
 
 			register();
 			return false;
@@ -36,13 +36,13 @@
 
 	function register(){
 
-		var registerac = $("#registerac").val();
+		var registerac = $("#registerac").val();	//讀取信箱輸入值
 
-		var registerpw = $("#registerpw").val();
+		var registerpw = $("#registerpw").val();	//讀取密碼輸入值
 
-		var registername = $("#registername").val();
+		var registername = $("#registername").val();	//讀取稱呼輸入值
 
-		if(registerac == ""){
+		if(registerac == ""){		//如果信箱為空值，提示請輸入信箱
 
 			$("#registercheck").text("請輸入信箱");
 			$("#registerac").focus();
@@ -50,7 +50,7 @@
 		
 			}
 	
-		if(registerpw == ""){
+		if(registerpw == ""){		//如果密碼為空值，提示請輸入密碼
 
 			$("#registercheck").text("請輸入密碼");
 			$("#registerpw").focus();
@@ -58,7 +58,7 @@
 
 			}
 
-		if(registername == ""){
+		if(registername == ""){		//如果稱呼為空值，提示請輸入稱呼
 
 			$("#registercheck").text("請輸入稱呼");
 			$("#registername").focus();
@@ -69,7 +69,7 @@
 
 	$.ajax({  //用ajax接收
 
-        url:'http://伺服器IP/app_php/register.php?registerac='+registerac+'&registerpw='+registerpw+'&registername='+registername+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/register.php?registerac='+registerac+'&registerpw='+registerpw+'&registername='+registername+'',  //接收的php檔案網址，GET方式傳送：信箱、密碼、稱呼
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -77,27 +77,27 @@
 
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
             
-		if(item.mailcheck == "信箱已被註冊過"){
+		if(item.mailcheck == "信箱已被註冊過"){//判斷如果伺服器回傳：信箱已被註冊過
 
-			var registerout='<p>'+item.mailcheck+'</p>';
+			var registerout='<p>'+item.mailcheck+'</p>';	//顯示信箱已被註冊過
             
 			$('#registercheck').empty();
 			$('#registerresult').empty();
-			$('#registerresult').append(registerout);   //#registerresult是找id為registerresult的標籤(下方有個ul標籤的id為registerresult)。.append(registerout)是把registerout的內容接到id為registerresult的標籤裡   
+			$('#registerresult').append(registerout);   //#registerresult是找id為registerresult的標籤(下方有個標籤的id為registerresult)。.append(registerout)是把registerout的內容接到id為registerresult的標籤裡   
 
 		}else{
 
-			var registerout='<p>'+item.mailcheck+'</p>';
+			var registerout='<p>'+item.mailcheck+'</p>';	//顯示伺服器回傳：註冊成功
             
 			$('#registercheck').empty();
 			$('#registerresult').empty();
-			$('#registerresult').append(registerout);   //#registerresult是找id為registerresult的標籤(下方有個ul標籤的id為registerresult)。.append(registerout)是把registerout的內容接到id為registerresult的標籤裡   
+			$('#registerresult').append(registerout);   //#registerresult是找id為registerresult的標籤(下方有個標籤的id為registerresult)。.append(registerout)是把registerout的內容接到id為registerresult的標籤裡   
 
 		}
 
 
           });
-		  //$('#registerresult').listview('refresh');//上方加入多個li後，需要重整頁面才會正常顯示，這行一定要有。
+		  
         },
         error:function(){ //錯誤時跑的function
         registercheck.text('There was an error loading the data.');  //出錯時顯示的文字
@@ -151,7 +151,7 @@
 	</div>
 
 
-	<a href="login.html" data-role="button">會員登入</a>
+	<a href="login.html" data-role="button">會員登入</a>  //按鈕，引導到會員登入頁面
  
 
 
