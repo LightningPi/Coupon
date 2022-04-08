@@ -17,6 +17,8 @@
 </head>
 
 <body>
+	
+	//已收藏商家
 
 <div data-role="page"  data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
 <script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
@@ -26,12 +28,12 @@
 
 			document.location.href="login.html";// 未登入，回登入頁
 		
-	}else{
+	}else{	//登入驗證 如果session memberid存在 = 已登入
 	
-		var memberid = sessionStorage.getItem('memberid');//接收login頁面的memberid session
+		var memberid = sessionStorage.getItem('memberid');	//接收登入login.html頁面，的會員主鍵memberid session
       
       $.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/store_collect.php?mid='+memberid+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/store_collect.php?mid='+memberid+'',  //接收的php檔案網址，以GET方式傳送會員主鍵memberid
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -40,10 +42,10 @@
            
 			var out='<li><a href="../store_context.html" onclick="storecontext('+item.store_id+')">'  //設定out變數的內容。注意：item.資料庫欄位名稱(如name)，就會把name欄位的值加進來(欄位名稱需在php檔中，有從資料庫撈出來的才有用)。+是連接符號，和java一樣，這邊+號這麼多是在設定它顯示的方式。
 				+'<img src="'+item.pic+'" height="200%" width="150%" />'          //這邊都是jquery-mobile的語法，下方ul中需要包li，其他標籤為每個li裡的標籤
-				+'<h3>'+item.name+'</h3>' 
-				+'<p>電話：'+item.tel+'</p>'
-				+'<p>地址：'+item.address+'</p>'
-				+'</a><a href="delete_store.html" onclick="deletestore('+item.store_id+')">刪除收藏</a>'
+				+'<h3>'+item.name+'</h3>' 	//店家名稱欄位
+				+'<p>電話：'+item.tel+'</p>'	//店家電話欄位
+				+'<p>地址：'+item.address+'</p>'	//店家地址欄位
+				+'</a><a href="delete_store.html" onclick="deletestore('+item.store_id+')">刪除收藏</a>'  //刪除已收藏店家按鈕，按下時觸發deletestore() function，設定想刪除的店家主鍵
 			    +'</li>';
             
 			$('#storecollect').append(out);   //#storecollect是找id為storecollect的標籤(下方有個ul標籤的id為storecollect)。.append(out)是把out的內容接到id為storecollect的標籤裡     
@@ -62,12 +64,12 @@
     });
 	
 	function storecontext(sid){
-		sessionStorage.setItem('sid',sid);//設定店家主鍵sid session，供store_context.html使用
+		sessionStorage.setItem('sid',sid);	//設定店家主鍵sid session，供店家內容store_context.html顯示使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function deletestore(deletestore){
-		sessionStorage.setItem('deletestore',deletestore);//設定刪除已收藏商店 deletestore session，供delete_store.html使用
+		sessionStorage.setItem('deletestore',deletestore);	//設定想刪除的店家主鍵 deletestore session，供delete_store.html刪除使用
 		//localStorage.setItem("tid",sid);
 		}
 
@@ -100,7 +102,7 @@
     	
 		<center>
 			<a href="logout.html" data-role="button" data-theme="a" data-inline="true">登出</a>
-			<a href="../storelist.html" data-role="button" data-theme="a" data-inline="true">商家列表</a>
+			<a href="../storelist.html" data-role="button" data-theme="a" data-inline="true">商家列表</a>	//按鈕，導引到商家列表
 		</center>
 		
 		<!--固定要用h4-->
