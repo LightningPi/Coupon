@@ -29,7 +29,7 @@
 		var cid = sessionStorage.getItem('cid');	//接收優惠券列表couponlist.html頁面，的優惠券主鍵cid session
 
 		$.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/coupon_context.php?id='+cid+'',  //接收的php檔案網址，以GET方式傳送優惠券主鍵cid，撈取優惠券內容
+        url:'http://伺服器IP/app_php/coupon_context.php?id='+cid+'',  //接收的php檔案網址，以GET方式傳送優惠券主鍵cid，從資料庫撈取優惠券內容
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -71,13 +71,13 @@
 
 
 	function cherish(cherishid){
-		sessionStorage.setItem('cherishid',cherishid);	//設定想收藏的優惠券主鍵 cherishid session，供收藏優惠券cherish_coupon.html，收藏優惠券使用
+		sessionStorage.setItem('cherishid',cherishid);	//設定想收藏的優惠券主鍵 cherishid session，供收藏優惠券cherish_coupon.html，收藏優惠券功能使用
 		//localStorage.setItem("tid",sid);
 		}
 
 
 	function address(address){
-		sessionStorage.setItem('address',address);	//設定店家主鍵address session，供road.html，搜尋店家地址使用
+		sessionStorage.setItem('address',address);	//設定店家主鍵address session，供road.html，從資料庫撈取店家地址使用
 		//localStorage.setItem("tid",sid);
 		}
 					 
