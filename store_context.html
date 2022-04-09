@@ -30,7 +30,7 @@ $(document).ready(function(){  //這一行是指當整個網頁檔案都載入�
 	 var sid = sessionStorage.getItem('sid');	//接收店家列表storelist.html頁面，的店家主鍵sid session
 
 		$.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/store_context.php?id='+sid+'',  //接收的php檔案網址，以GET方式傳送商家主鍵sid
+        url:'http://伺服器IP/app_php/store_context.php?id='+sid+'',  //接收的php檔案網址，以GET方式傳送商家主鍵sid，從資料庫撈取商家內容
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -38,9 +38,9 @@ $(document).ready(function(){  //這一行是指當整個網頁檔案都載入�
          
 		  $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
          
-			var top='<center><h1>'+item.name+'</h1></center>'	//顯示店家名稱
-				+'<center><img src="'+item.pic+'" height="170px"/></center><br/>'	//顯示店家圖片
-            			+item.introduce+'<br/>';	//顯示店家介紹
+			var top='<center><h1>'+item.name+'</h1></center>'	//顯示店家名稱欄位
+				+'<center><img src="'+item.pic+'" height="170px"/></center><br/>'	//顯示店家圖片欄位
+            			+item.introduce+'<br/>';	//顯示店家介紹欄位
 			  			  
 			
 			$('#top').append(top);		//top內容，加入id為top的div裡
@@ -60,8 +60,8 @@ $(document).ready(function(){  //這一行是指當整個網頁檔案都載入�
 			  
 			$('#mid').append(long);		//long內容，加入id為mid的div裡
 		
-			var bot='<p>營業時間：'+item.time+'</p>' 	//顯示店家營業時間
-				+'<p>公休時間：'+item.rest+'</p>'	 //顯示店家公休時間
+			var bot='<p>營業時間：'+item.time+'</p>' 	//顯示店家營業時間欄位
+				+'<p>公休時間：'+item.rest+'</p>'	 //顯示店家公休時間欄位
   				+'<center><div class="ui-grid-c">'
 				+'<div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:144px"><a href="tel:'+item.tel+'"><img src="http://伺服器IP/app_php/ig/phone.bmp" ></a></div></div>'
 				+'<div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:144px"><a href="li/cherish_store.html" onclick="cherishstore('+item.store_id+')"><img src="http://伺服器IP/app_php/ig/star.bmp"></a></div></div>'
@@ -87,24 +87,24 @@ $(document).ready(function(){  //這一行是指當整個網頁檔案都載入�
 
 
 	function long(longid){
-		sessionStorage.setItem('longid',longid);	//設定店家主鍵longid session，供長期優惠long.html，搜尋商家長期優惠使用
+		sessionStorage.setItem('longid',longid);	//設定店家主鍵longid session，供長期優惠long.html，從資料庫撈取商家長期優惠使用
 		//localStorage.setItem("tid",sid);
 		}
 
 
 	function time(timeid){
-		sessionStorage.setItem('timeid',timeid);	//設定店家主鍵timeid session，供分時優惠long.html，搜尋商家分時優惠使用
+		sessionStorage.setItem('timeid',timeid);	//設定店家主鍵timeid session，供分時優惠long.html，從資料庫撈取商家分時優惠使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function cherishstore(cherishstore){
-		sessionStorage.setItem('cherishstore',cherishstore);	//設定店家主鍵cherishstore session，供收藏商店cherish_store.html，收藏商店使用
+		sessionStorage.setItem('cherishstore',cherishstore);	//設定店家主鍵cherishstore session，供收藏商店cherish_store.html，收藏商店功能使用
 		//localStorage.setItem("tid",sid);
 		}
 
 
 	function address(address){
-		sessionStorage.setItem('address',address);	//設定店家主鍵address session，供road.html，搜尋店家地址使用
+		sessionStorage.setItem('address',address);	//設定店家主鍵address session，供road.html，從資料庫撈取店家地址使用
 		//localStorage.setItem("tid",sid);
 		}
 	
