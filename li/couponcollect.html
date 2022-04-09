@@ -45,7 +45,7 @@
 		  
 			var out='<li><a href="../bi/coupon_context.html" onclick="pagesend('+item.coupon_id+')">'  //設定out變數的內容。注意：item.資料庫欄位名稱(如name)，就會把name欄位的值加進來(欄位名稱需在php檔中，有從資料庫撈出來的才有用)。+是連接符號，和java一樣，這邊+號這麼多是在設定它顯示的方式。
 				+'<img src="'+item.pic+'" height="200%" width="150%" />' //這邊都是jquery-mobile的語法，下方ul中需要包li，其他標籤為每個li裡的標籤
-				+'<h2>'+item.title+'</h2>' //名稱欄位
+				+'<h2>'+item.title+'</h2>' //優惠券名稱欄位
 				+'<p>優惠商家:'+item.name+'</p>'  //優惠店家欄位
 				+'<p>優惠開始日期:'+item.timestart+'</p>'  //優惠開始日期欄位
 				+'<p>優惠結束日期:'+item.timeend+'</p>'  //優惠結束日期欄位
