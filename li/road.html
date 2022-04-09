@@ -31,7 +31,7 @@ $(document).ready(function(){  //這一行是指當整個網頁檔案都載入�
 
 	$.ajax({  //用ajax接收
 
-        url:'http://伺服器IP/app_php/address.php?id='+address+'',  //接收的php檔案網址，傳送商家主鍵address，從資料庫撈取商家地址
+        url:'http://伺服器IP/app_php/address.php?id='+address+'',  //接收的php檔案網址，以GET方式傳送商家主鍵address，從資料庫撈取商家地址
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
