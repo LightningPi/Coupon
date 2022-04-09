@@ -24,7 +24,7 @@
     $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
       
       $.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/sql_view.php',  //接收的php檔案網址，撈取所有店家
+        url:'http://伺服器IP/app_php/sql_view.php',  //接收的php檔案網址，從資料庫撈取所有店家，作為本頁商家列表使用
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -51,12 +51,12 @@
     });
 	
 	function storecontext(sid){
-		sessionStorage.setItem('sid',sid);	//設定商家主鍵sid session，供店家內容store_context.html，搜尋店家內容使用
+		sessionStorage.setItem('sid',sid);	//設定商家主鍵sid session，供店家內容store_context.html，從資料庫撈取店家內容使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function cherishstore(cherishstore){
-		sessionStorage.setItem('cherishstore',cherishstore);	//設定想收藏的商店 cherishstore session，供收藏店家cherish_store.html，收藏店家使用
+		sessionStorage.setItem('cherishstore',cherishstore);	//設定想收藏的商店 cherishstore session，供收藏店家cherish_store.html，收藏店家功能使用
 		//localStorage.setItem("tid",sid);
 		}
 
