@@ -25,7 +25,7 @@
     $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
       
       $.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/bi/sql_view.php',  //接收的php檔案網址，撈取所有優惠券
+        url:'http://伺服器IP/app_php/bi/sql_view.php',  //接收的php檔案網址，從資料庫撈取所有優惠券，作為本頁優惠券列表使用
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -52,12 +52,12 @@
     });
 	
 	function pagesend(cid){
-		sessionStorage.setItem('cid',cid);	//設定優惠券主鍵cid session，供優惠內容coupon_context.html顯示使用
+		sessionStorage.setItem('cid',cid);	//設定優惠券主鍵cid session，供優惠內容coupon_context.html，從資料庫撈取優惠內容使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function cherish(cherishid){
-		sessionStorage.setItem('cherishid',cherishid);	//設定想收藏的優惠券主鍵 cherishid session，供收藏優惠券cherish_coupon.html收藏使用
+		sessionStorage.setItem('cherishid',cherishid);	//設定想收藏的優惠券主鍵 cherishid session，供收藏優惠券cherish_coupon.html，收藏優惠券使用
 		//localStorage.setItem("tid",sid);
 		}
 
