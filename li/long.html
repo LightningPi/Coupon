@@ -17,7 +17,8 @@
 </head>
 
 <body>
-
+	
+	//長期優惠
 
 <div data-role="page" data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
 
@@ -26,10 +27,10 @@
   
   $(document).ready(function(){
 
-		var longid = sessionStorage.getItem('longid');//接收store_context.html頁面，的商家主鍵longid session，用來搜尋商家長期優惠
+		var longid = sessionStorage.getItem('longid');//接收store_context.html頁面，的商家主鍵longid session
 
 		$.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/long.php?id='+longid+'',  //接收的php檔案網址
+        url:'http://伺服器IP/app_php/long.php?id='+longid+'',  //接收的php檔案網址，以GET方式傳送商家主鍵longid，從資料庫撈取商家長期優惠，作為本頁商家長期優惠內容使用
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -37,9 +38,9 @@
         
 		  $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
          	
-			var long='<p>'+item.content+'</p><br/>';//長期優惠內容，一筆一筆顯示
+			var long='<p>'+item.content+'</p><br/>';	//長期優惠內容，一筆一筆顯示
 
-			$('#longshow').append(long);//顯示在id為longshow的div
+			$('#longshow').append(long);	//long內容，加入id為longshow的div裡
 
 
           });
