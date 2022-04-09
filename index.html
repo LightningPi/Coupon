@@ -23,7 +23,7 @@
 <script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
  
   
-  $(document).ready(function(){
+  $(document).ready(function(){  //這一行是指當整個網頁檔案都載入時，才會執行此function
 
 	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入，底部區塊：顯示登入按鈕。 如果已登入，底部區塊：顯示登出按鈕
 
@@ -61,13 +61,13 @@
 
     <div style="height:40%;">
 	<ul>
-		<li><a href="storelist.html"><img src="http://伺服器IP/app_php/ig/P1.jpg" width="90" ></a></li>	//商家列表
-		<li><a href="bi/couponlist.html"><img src="http://伺服器IP/app_php/ig/P2.jpg" width="90" ></a></li>	//優惠券列表	
-		<li><a href="li/couponcollect.html"><img src="http://伺服器IP/app_php/ig/P3.jpg" width="90"></a> </li>	//集券冊
+		<li><a href="storelist.html"><img src="http://伺服器IP/app_php/ig/P1.jpg" width="90" ></a></li>	//引導到商家列表
+		<li><a href="bi/couponlist.html"><img src="http://伺服器IP/app_php/ig/P2.jpg" width="90" ></a></li>	//引導到優惠券列表	
+		<li><a href="li/couponcollect.html"><img src="http://伺服器IP/app_php/ig/P3.jpg" width="90"></a> </li>	//引導到集券冊
    
-		<li><a href="li/eat_random.html"><img src="http://伺服器IP/app_php/ig/P4.jpg" width="90"></a></li>		//今天吃什麼，隨機產生一筆優惠券
-		<li><a href="li/aboutus.html"><img src="http://伺服器IP/app_php/ig/P5.jpg" width="90" ></a></li>		//關於我們
-		<li><a href="li/report.html"><img src="http://伺服器IP/app_php/ig/P6.jpg" width="90"></a></li>		//問題回報
+		<li><a href="li/eat_random.html"><img src="http://伺服器IP/app_php/ig/P4.jpg" width="90"></a></li>		//引導到今天吃什麼，隨機產生一筆優惠券
+		<li><a href="li/aboutus.html"><img src="http://伺服器IP/app_php/ig/P5.jpg" width="90" ></a></li>		//引導到關於我們
+		<li><a href="li/report.html"><img src="http://伺服器IP/app_php/ig/P6.jpg" width="90"></a></li>		//引導到問題回報
 	</ul>
     </div>
  
