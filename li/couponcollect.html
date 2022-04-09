@@ -34,7 +34,7 @@
 		var memberid = sessionStorage.getItem('memberid');	//接收登入login.html頁面，的會員主鍵memberid session
             
       $.ajax({  //用ajax接收
-        url:'http://伺服器IP/app_php/coupon_collect.php?mid='+memberid+'',  //接收的php檔案網址，以GET方式傳送會員主鍵memberid
+        url:'http://伺服器IP/app_php/coupon_collect.php?mid='+memberid+'',  //接收的php檔案網址，以GET方式傳送會員主鍵memberid，從資料庫撈取已收藏優惠券列表
         dataType:'jsonp',  //以jsonp方式接收
         jsonp:'jsoncallback',  //接收php檔案內jsoncallback的值
         timeout:5000,
@@ -47,8 +47,8 @@
 				+'<img src="'+item.pic+'" height="200%" width="150%" />' //這邊都是jquery-mobile的語法，下方ul中需要包li，其他標籤為每個li裡的標籤
 				+'<h2>'+item.title+'</h2>' //名稱欄位
 				+'<p>優惠商家:'+item.name+'</p>'  //優惠店家欄位
-				+'<p>優惠開始日期:'+item.timestart+'</p>'  //開始時間欄位
-				+'<p>優惠結束日期:'+item.timeend+'</p>'  //結束時間欄位
+				+'<p>優惠開始日期:'+item.timestart+'</p>'  //優惠開始日期欄位
+				+'<p>優惠結束日期:'+item.timeend+'</p>'  //優惠結束日期欄位
 				+'</a><a href="delete_coupon.html" onclick="deletecoupon('+item.coupon_id+')" data-rel="dialog" data-transition="pop">刪除收藏</a>'  //刪除已收藏優惠券按鈕，按下時觸發deletecoupon() function，設定想刪除的優惠券主鍵
 			    +'</li>';
             
@@ -69,12 +69,12 @@
     });
 	
 	function pagesend(cid){
-		sessionStorage.setItem('cid',cid);	//設定優惠券主鍵cid session，供優惠內容coupon_context.html顯示使用
+		sessionStorage.setItem('cid',cid);	//設定優惠券主鍵cid session，供優惠券內容coupon_context.html，從資料庫撈取優惠券內容使用
 		//localStorage.setItem("tid",sid);
 		}
 
 	function deletecoupon(deletecoupon){
-		sessionStorage.setItem('deletecoupon',deletecoupon);	//設定想刪除的優惠券主鍵 deletecoupon session，供刪除優惠券delete_coupon.html刪除使用
+		sessionStorage.setItem('deletecoupon',deletecoupon);	//設定想刪除的優惠券主鍵 deletecoupon session，供刪除優惠券delete_coupon.html，刪除優惠券功能使用
 		//localStorage.setItem("tid",sid);
 		}
 
