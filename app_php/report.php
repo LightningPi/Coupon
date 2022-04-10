@@ -21,7 +21,7 @@ $report_content=$_GET['report_content'];	//內容，變數$report_content，接�
 
 $sql="INSERT INTO report(name,title,content,email,type) VALUES ('".$report_name."','".$report_title."','".$report_content."','".$report_email."','2')";  //問題回報功能(type = 2)，將稱呼、標題、內容、信箱，寫入回報資料表report
 
-mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
+mysql_query($sql)or die("Query error:".mysql_error());  //寫入資料庫
 
 	$reportdone[]=array("reportgood" => "回報成功");	//把 「回報成功訊息」 設定成「陣列變數」。
 
