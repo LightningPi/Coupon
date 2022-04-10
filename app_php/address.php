@@ -9,7 +9,7 @@ mysql_query("SET NAMES 'utf8'");
 
 $store_id=$_GET['id'];	//變數$store_id，接收由road.html傳送的id
 
-$sql="SELECT address FROM store WHERE store_id=".$store_id;  //從商家資料表store，撈取商家地址
+$sql="SELECT address FROM store WHERE store_id=".$store_id;  //從商家資料表store，撈取商家地址address
 
 $result=mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
 
