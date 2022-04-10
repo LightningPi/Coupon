@@ -7,11 +7,11 @@ mysql_select_db("coupon");
 mysql_query("SET NAMES 'utf8'");
 
 
-$store_id=$_GET['id'];
+$store_id=$_GET['id'];		//商家主鍵，變數$store_id，接收由time.html傳送的id
 
 $sql="SELECT content FROM coupon WHERE store_id=".$store_id." && class=2";
 
-//class = 2：撈取分時優惠
+//分時優惠class = 2，從優惠券資料表coupon，撈取符合商家主鍵的分時優惠
 
 
 $result=mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
@@ -24,5 +24,5 @@ while($row=mysql_fetch_assoc($result)){ //傳送mysql語法從資料庫抓值，
 
 	}
 
-echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在index_sql_view.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
+echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在time.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
 ?>
