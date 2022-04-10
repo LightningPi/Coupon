@@ -70,9 +70,9 @@
 
 			var out='<p>'+item.member_id+'</p>';
             
-			$('#check').empty();
-			$('#loginresult').empty();
-			$('#loginresult').append(out);   //#loginresult是找id為loginresult的標籤(下方有個ul標籤的id為loginresult)。.append(out)是把out的內容接到id為loginresult的標籤裡   
+			$('#check').empty();	//清空上次的空值提示內容
+			$('#loginresult').empty();	//清空上次伺服器端回傳訊息
+			$('#loginresult').append(out);   //out內容，加入id為loginresult的div裡   
 
 		}else{
 
