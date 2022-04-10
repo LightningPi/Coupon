@@ -66,7 +66,7 @@
 
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
             
-		if(item.member_id == "信箱或密碼輸入錯誤"){		//如果信箱或密碼輸入錯誤，提示輸入錯誤
+		if(item.member_id == "信箱或密碼輸入錯誤"){		//如果，伺服器回傳值 = 信箱或密碼輸入錯誤，提示信箱或密碼輸入錯誤
 
 			var out='<p>'+item.member_id+'</p>';
             
@@ -76,7 +76,7 @@
 
 		}else{
 
-			member(item.member_id);//呼叫會員memberid session		//如果帳密驗證成功，呼叫member() function，設定memberid session
+			member(item.member_id);//呼叫會員memberid session		//如果，伺服器回傳值 = 會員主鍵member_id，則帳密驗證成功，呼叫member() function，設定memberid session
 
 			document.location.href="../index.html";		//登入成功回首頁    
 
