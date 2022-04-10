@@ -11,7 +11,7 @@ $member_id=$_GET['mid'];	//會員主鍵，變數$member_id，接收由cherish_co
 
 $cherish_id=$_GET['cid'];	//優惠券主鍵，變數$cherish_id，接收由cherish_coupon.html傳送的cid
 
-$sql="INSERT INTO collect(class,coupon_id,member_id) VALUES ('1','".$cherish_id."','".$member_id."')";  //收藏優惠功能()，將優惠券主鍵$cherish_id、會員主鍵$member_id，寫入收藏資料表collect
+$sql="INSERT INTO collect(class,coupon_id,member_id) VALUES ('1','".$cherish_id."','".$member_id."')";  //收藏優惠功能(class = 1)，將優惠券主鍵$cherish_id、會員主鍵$member_id，寫入收藏資料表collect
 
 mysql_query($sql);  //寫入資料庫
 
