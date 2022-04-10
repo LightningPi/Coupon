@@ -56,7 +56,7 @@
 
 			}
 
-	$.ajax({  //用ajax接收		//如果帳號密碼都有輸入，驗證帳密是否錯誤
+	$.ajax({  //用ajax接收		//如果帳號密碼都有輸入，傳送帳號、密碼到伺服器，驗證帳號密碼是否正確
 
         url:'http://伺服器IP/app_php/login.php?ac='+ac+'&pw='+pw+'',  //接收的php檔案網址，以GET方式傳送帳號、密碼，到伺服器做帳號密碼驗證
         dataType:'jsonp',  //以jsonp方式接收
