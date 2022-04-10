@@ -7,7 +7,7 @@ mysql_select_db("coupon");
 mysql_query("SET NAMES 'utf8'");
 
 
-$store_id=$_GET['id'];	//變數$store_id，接收由road.html傳送的id
+$store_id=$_GET['id'];	//商家主鍵，變數$store_id，接收由road.html傳送的id
 
 $sql="SELECT address FROM store WHERE store_id=".$store_id;  //從商家資料表store，撈取商家地址address
 
