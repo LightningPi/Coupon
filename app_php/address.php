@@ -7,9 +7,9 @@ mysql_select_db("coupon");
 mysql_query("SET NAMES 'utf8'");
 
 
-$store_id=$_GET['id'];
+$store_id=$_GET['id'];	//變數$store_id，接收由road.html傳送的id
 
-$sql="SELECT address FROM store WHERE store_id=".$store_id;
+$sql="SELECT address FROM store WHERE store_id=".$store_id;  //從商家資料表store，撈取商家地址
 
 $result=mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
 
@@ -21,5 +21,5 @@ while($row=mysql_fetch_assoc($result)){ //傳送mysql語法從資料庫抓值，
 
 	}
 
-echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在index_sql_view.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
+echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在road.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
 ?>
