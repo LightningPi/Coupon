@@ -35,7 +35,7 @@
 
 	});
 
-	function register(){	//空值驗證功能，使用者必須輸入所有欄位，才會以ajax方式，寫入註冊內容到資料庫
+	function register(){	//空值驗證功能，使用者必須輸入所有欄位，才會以ajax方式，傳送註冊內容到伺服器端php檔案，做信箱重複驗證，如果信箱可使用，寫入註冊資料到資料庫
 
 		var registerac = $("#registerac").val();	//讀取信箱輸入值
 
@@ -78,17 +78,17 @@
 
           $.each(data,function(i,item){ //用迴圈逐一傳入物件各屬性的名稱(i),及值(item)給callback函數處理。其中item很重要，下面注意的地方會解釋。
             
-		if(item.mailcheck == "信箱已被註冊過"){	//伺服器端php檔案回傳值判斷，如果伺服器回傳：信箱已被註冊過
+		if(item.mailcheck == "信箱已被註冊過"){	//由伺服器端php檔案回傳值判斷，如果伺服器回傳：信箱已被註冊過，顯示信箱已被註冊過
 
-			var registerout='<p>'+item.mailcheck+'</p>';	//顯示信箱已被註冊過
+			var registerout='<p>'+item.mailcheck+'</p>';	//顯示伺服器回傳訊息：信箱已被註冊過
             
 			$('#registercheck').empty();	//清空上次的空值提示內容
 			$('#registerresult').empty();	//清空上次伺服器端回傳訊息
 			$('#registerresult').append(registerout);   //registerout內容，加入id為registerresult的div裡   
 
-		}else{		//伺服器端php檔案回傳值判斷，如果伺服器回傳：註冊成功
+		}else{		//由伺服器端php檔案回傳值判斷，如果伺服器回傳：註冊成功，顯示註冊成功
 
-			var registerout='<p>'+item.mailcheck+'</p>';	//顯示註冊成功
+			var registerout='<p>'+item.mailcheck+'</p>';	//顯示伺服器回傳訊息：註冊成功
             
 			$('#registercheck').empty();	//清空上次的空值提示內容
 			$('#registerresult').empty();	//清空上次伺服器端回傳訊息
