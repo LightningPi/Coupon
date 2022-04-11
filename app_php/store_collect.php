@@ -6,15 +6,18 @@ mysql_connect("localhost","root","1234") or die ("Could not connect:".mysql_erro
 mysql_select_db("coupon");
 mysql_query("SET NAMES 'utf8'");
 
-$member_id=$_GET['mid'];
+$member_id=$_GET['mid'];	//會員主鍵，變數$member_id，接收由storecollect.html傳送的mid
 
 
 $sql="SELECT store.store_id,store.name,store.tel,store.address,store.pic,store.introduce FROM collect INNER JOIN store ON collect.store_id=store.store_id WHERE collect.member_id=".$member_id." && collect.class=2";
+
+  //從收藏資料表collect，撈取會員的商家收藏紀錄
+
 $result=mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
 
 $record=array(); //設定$record變數(可自己更名)為array陣列，因為json是陣列型式。
 while($row=mysql_fetch_assoc($result)){ //傳送mysql語法從資料庫抓值，並用$row變數接收從資料庫抓取的值。用while迴圈把資料一筆一筆抓出
 	$record[]=$row;	//把$row抓到的值指定給$record陣列。
 	}
-echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在index_sql_view.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
+echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在storecollect.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
 ?>
