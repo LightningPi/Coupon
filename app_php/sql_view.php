@@ -13,5 +13,5 @@ $record=array(); //設定$record變數(可自己更名)為array陣列，因為js
 while($row=mysql_fetch_assoc($result)){ //傳送mysql語法從資料庫抓值，並用$row變數接收從資料庫抓取的值。用while迴圈把資料一筆一筆抓出
 	$record[]=$row;	//把$row抓到的值指定給$record陣列。
 	}
-echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在storelist.htmll裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
+echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在storelist.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
 ?>
