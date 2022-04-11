@@ -7,9 +7,11 @@ mysql_select_db("coupon");
 mysql_query("SET NAMES 'utf8'");
 
 
-$coupon_id=$_GET['id'];
+$coupon_id=$_GET['id'];		//優惠券主鍵，變數$coupon_id，接收由coupon_context.html傳送的id
 
 $sql="SELECT coupon.coupon_id,coupon.store_id,store.name,coupon.title,coupon.content,coupon.timestart,coupon.timeend,coupon.pic,store.time,store.address,store.tel FROM coupon CROSS JOIN store WHERE coupon.store_id=store.store_id && coupon.coupon_id=".$coupon_id;
+
+//從優惠券資料表coupon，撈取優惠券詳細內容
 
 $result=mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
 
@@ -21,5 +23,5 @@ while($row=mysql_fetch_assoc($result)){ //傳送mysql語法從資料庫抓值，
 
 	}
 
-echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在index_sql_view.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
+echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在coupon_context.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
 ?>
