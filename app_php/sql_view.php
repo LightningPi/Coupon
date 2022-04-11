@@ -6,12 +6,12 @@ mysql_connect("localhost","root","1234") or die ("Could not connect:".mysql_erro
 mysql_select_db("coupon");
 mysql_query("SET NAMES 'utf8'");
 
-$sql="SELECT store_id,name,tel,address,pic,introduce FROM store";
+$sql="SELECT store_id,name,tel,address,pic,introduce FROM store";  //從商家資料表store，撈取商家列表所需資料
 $result=mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
 
 $record=array(); //設定$record變數(可自己更名)為array陣列，因為json是陣列型式。
 while($row=mysql_fetch_assoc($result)){ //傳送mysql語法從資料庫抓值，並用$row變數接收從資料庫抓取的值。用while迴圈把資料一筆一筆抓出
 	$record[]=$row;	//把$row抓到的值指定給$record陣列。
 	}
-echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在index_sql_view.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
+echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在storelist.htmll裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
 ?>
