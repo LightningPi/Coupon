@@ -16,13 +16,13 @@ $pw=$_GET['pw'];	//密碼，變數$pw，接收由login.html傳送的pw
 
 $sql="SELECT member_id FROM member WHERE ac='".$ac."'&&pw='".$pw."'";
 
-  //從會員資料表member，撈取會員資料
+  //從會員資料表member，撈取會員主鍵
 
 $result=mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
 
-	$num_rows = mysql_num_rows($result);
+	$num_rows = mysql_num_rows($result);	//透過mysql_num_rows()，登入信箱、密碼驗證，確認會員資料表member，是否撈取得到會員主鍵
 
-	if($num_rows > 0){
+	if($num_rows > 0){	//登入信箱、密碼驗證，如果變數$num_rows > 0，代表會員登入成功，回傳會員主鍵member_id，給login.html
 
 $record=array(); //設定$record變數(可自己更名)為array陣列，因為json是陣列型式。
 
@@ -32,11 +32,11 @@ while($row=mysql_fetch_assoc($result)){ //傳送mysql語法從資料庫抓值，
 
 	}
 
-echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在index_sql_view.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
+echo $_GET['jsoncallback'].'('.json_encode($record).');';  //$_GET裡的jsoncallback會在login.html裡用到。$record的資料是php array，透過json_encode轉換成json可傳送的值。
 
-}else{
+}else{	//如果變數$num_rows 不大於0，代表信箱或密碼輸入錯誤
 
-	$wrong[]=array("member_id" => "信箱或密碼輸入錯誤");	//把 「錯誤訊息」 設定成「陣列變數」。
+	$wrong[]=array("member_id" => "信箱或密碼輸入錯誤");	//把 「信箱或密碼輸入錯誤訊息」 設定成「陣列變數」。
 
 	echo $_GET['jsoncallback'].'('.json_encode($wrong).');';  //$_GET裡的jsoncallback會在login.html裡用到。$wrong的資料是php array，透過json_encode轉換成json可傳送的值。
 
