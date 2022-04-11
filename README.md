@@ -1,8 +1,11 @@
 # Coupon
 大四專題 Android手機優惠券App作品 (七人合作)<br/>
 作品網址：https://lightningpi.website/app_php/app
+系統建置規格：PHP、MySQL、CSS3、HTML5、JavaScript、jQuery Mobile、Ajax、JSONP，結合Phonegap手機程式開發框架。
 
 由於PhoneGap官方網站已關閉<br/>
+(PhoneGap不再提供服務)<br/>
+將大四專題舊有的Android手機程式碼內容<br/>
 修改成新架設的伺服器IP後<br/>
 發現Android apk均無法順利運作<br/>
 無法以手機程式方式呈現<br/>
