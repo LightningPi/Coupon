@@ -7,14 +7,16 @@ mysql_select_db("coupon");
 mysql_query("SET NAMES 'utf8'");
 
 
-$ac=$_GET['ac'];
+$ac=$_GET['ac'];	//信箱，變數$ac，接收由login.html傳送的ac
 
-$pw=$_GET['pw'];
+$pw=$_GET['pw'];	//密碼，變數$pw，接收由login.html傳送的pw
 
 //echo "帳號：".$ac."密碼：".$pw;
 
 
 $sql="SELECT member_id FROM member WHERE ac='".$ac."'&&pw='".$pw."'";
+
+  //從會員資料表member，撈取會員資料
 
 $result=mysql_query($sql)or die("Query error:".mysql_error());  //設定$result為mysql的傳送語法，並將$sql中的SELECT語法代入
 
