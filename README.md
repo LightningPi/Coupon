@@ -1,5 +1,6 @@
 # Coupon
-大四專題 Android手機優惠券App作品 (七人合作)<br/>
+大四畢業專題
+開發Android，手機優惠券App作品 (七人合作)<br/>
 作品網址：https://lightningpi.website/app_php/app <br/>
 系統建置規格：PHP、Phonegap手機程式開發框架、jQuery Mobile、<br/>
 JavaScript、Ajax、JSONP、<br/>
