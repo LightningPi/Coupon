@@ -23,9 +23,9 @@ HTML5、CSS3、MySQL<br/>
 問題回報(回報App問題、其他建議)<br/>
 <br/>
 <br/>
-手機端，檔案位置：所有檔案，(不包括app_php資料夾)<br/>
+手機檔案位置：所有檔案，(不包括app_php資料夾)<br/>
 <br/>
-伺服器端，檔案位置：app_php資料夾內，所有檔案<br/>
+伺服器檔案位置：app_php資料夾內，所有檔案<br/>
 <br/>
 <br/>
 由於PhoneGap官方網站已關閉<br/>
