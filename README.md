@@ -6,12 +6,12 @@
 伺服器檔案位置：app_php資料夾<br/>
 資料庫檔案：coupon.sql <br/>
 <br/>
-系統建置規格：<br/>
+一、系統建置規格：<br/>
 PHP、Phonegap手機程式開發框架、jQuery Mobile、<br/>
 JavaScript、Ajax、JSONP、<br/>
 HTML5、CSS3、MySQL<br/>
 <br/>
-一、系統主要功能：<br/>
+二、系統主要功能：<br/>
 1.今天吃什麼(隨機產生一筆優惠券)<br/>
 2.商家列表、商家內容(商家長期優惠、分時優惠)<br/>
 (1)收藏商家功能<br/>
@@ -26,7 +26,7 @@ HTML5、CSS3、MySQL<br/>
 6.問題回報(回報App問題、其他建議)<br/>
 <br/>
 <br/>
-二、系統展示方式調整說明：<br/>
+三、系統展示方式調整說明：<br/>
 由於PhoneGap官方網站已關閉<br/>
 (PhoneGap不再提供服務)<br/>
 將大四專題舊有的Android手機程式碼內容<br/>
