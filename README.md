@@ -3,7 +3,7 @@
 開發Android，手機優惠券App作品 (七人合作)<br/>
 作品網址：https://lightningpi.website/app_php/app <br/>
 手機檔案位置：所有檔案，(不包括app_php資料夾)<br/>
-伺服器檔案位置：app_php資料夾內，所有檔案<br/>
+伺服器檔案位置：app_php資料夾<br/>
 資料庫檔案：coupon.sql <br/>
 <br/>
 系統建置規格：<br/>
