@@ -2,6 +2,9 @@
 大四畢業專題<br/>
 開發Android，手機優惠券App作品 (七人合作)<br/>
 作品網址：https://lightningpi.website/app_php/app <br/>
+手機檔案位置：所有檔案，(不包括app_php資料夾)<br/>
+伺服器檔案位置：app_php資料夾內，所有檔案<br/>
+資料庫檔案：coupon.sql <br/>
 <br/>
 系統建置規格：<br/>
 PHP、Phonegap手機程式開發框架、jQuery Mobile、<br/>
@@ -23,13 +26,7 @@ HTML5、CSS3、MySQL<br/>
 6.問題回報(回報App問題、其他建議)<br/>
 <br/>
 <br/>
-二、系統檔案位置：<br/>
-手機檔案位置：所有檔案，(不包括app_php資料夾)<br/>
-<br/>
-伺服器檔案位置：app_php資料夾內，所有檔案<br/>
-<br/>
-<br/>
-三、系統展示方式調整說明：<br/>
+二、系統展示方式調整說明：<br/>
 由於PhoneGap官方網站已關閉<br/>
 (PhoneGap不再提供服務)<br/>
 將大四專題舊有的Android手機程式碼內容<br/>
