@@ -1,6 +1,6 @@
 # Coupon
 大四畢業專題<br/>
-開發PHP Android，手機優惠券App作品 (七人合作)<br/>
+開發 Android，手機優惠券App作品(PHP)(七人合作)<br/>
 作品網址：https://lightningpi.website/app_php/app <br/>
 手機檔案位置：所有檔案，(不包括app_php資料夾)<br/>
 伺服器檔案位置：app_php資料夾<br/>
