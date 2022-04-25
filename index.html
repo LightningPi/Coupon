@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html><!--HTML 5宣告-->
+<html><head>
+
+  <meta http-equiv="Content-Language" content="zh-tw">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width;" /><!--initial-scale=1表示螢幕初始大小為100%。maximum-scale=1表示螢幕最大為100%。minimum-scale=1表示螢幕最小為100%(不可縮)。 width這邊的設定為依照裝置螢幕的大小而調整。-->
+
+  <link rel="stylesheet" type="text/css" href="jquery.mobile-1.2.0.min.css" /> <!--引用jquery-mobile的css-->      
+  <script type="text/javascript" src="cordova-2.0.0.js"></script> <!--引用phonegap的javascript-->
+  <script type="text/javascript" src="jquery-1.8.2.min.js"></script> <!--引用jquery的javascript-->
+  <script type="text/javascript" src="jquery.mobile-1.2.0.min.js"></script> <!--引用jquery.mobile的javascript-->
+
+	<!--一起用的javascript css放在<head>和</head>裡-->
+
+  <title></title><!--這個設定在手機上沒效果-->
+</head>
+
+<body>
+
+
+<div data-role="page"  data-add-back-btn="true" id="page"><!--手機分上、中、下三區塊，這三個區塊放在這個div裡面。data-add-back-btn用來設定回上一頁按鈕(不加或沒有上一頁時，則不會顯示此按鈕)。id可以自己命名。此頁專用的javascript css放在這個div裡。-->
+	
+<script type="text/javascript">  //這頁專用的javascript語法，需包在page的div裡。
+ 
+  
+  $(document).ready(function(){
+
+	if(sessionStorage.getItem('memberid')==null){	//登入驗證 如果session memberid不存在 = 未登入，底部區塊：顯示登入按鈕。 如果已登入，底部區塊：顯示登出按鈕
+
+		document.getElementById("nomember").style.display = "";
+		document.getElementById("member").style.display = "none";
+
+	}else{
+
+		document.getElementById("nomember").style.display = "none";
+		document.getElementById("member").style.display = "";
+
+	}
+	
+
+	
+  });	
+
+
+					 
+</script>  <!--這頁專用的javascript語法結尾-->    
+
+
+  <div data-role="header"  data-position="fixed"><!--上方區塊div-->
+
+	
+	<h1>PhoneCoupon</h1>  <!--固定要用h4-->
+
+  </div><!--上方區塊結束-->
+
+  <div data-role="content"><!--中間區塊div (程式主要內容)-->
+
+    <div data-role="navbar" data-grid="b" data-position="fixed">
+
+    		<div style="height:60%;"><img src="http://伺服器IP/app_php/ig/logo4.jpg" width="100%" height="70%"></div>
+
+    <div style="height:40%;">
+	<ul>
+		<li><a href="storelist.html"><img src="http://伺服器IP/app_php/ig/P1.jpg" width="90" ></a></li>
+		<li><a href="bi/couponlist.html"><img src="http://伺服器IP/app_php/ig/P2.jpg" width="90" ></a></li>
+		<li><a href="li/couponcollect.html"><img src="http://伺服器IP/app_php/ig/P3.jpg" width="90"></a> </li>
+   
+		<li><a href="li/eat_random.html"><img src="http://伺服器IP/app_php/ig/P4.jpg" width="90"></a></li>
+		<li><a href="li/aboutus.html"><img src="http://伺服器IP/app_php/ig/P5.jpg" width="90" ></a></li>
+		<li><a href="li/report.html"><img src="http://伺服器IP/app_php/ig/P6.jpg" width="90"></a></li>
+	</ul>
+    </div>
+ 
+ 
+ 	<script>
+		//添加回退按钮事件  
+		document.addEventListener("backbutton",onBackKeyDown,false);   
+		  
+		//BackButton按钮  
+		function onBackKeyDown(){  
+			if($.mobile.activePage.is('#homepage')){  
+				navigator.app.exitApp();  
+			}  
+			else {  
+				navigator.app.backHistory();  
+			}  
+		}  
+	</script>
+ 
+ 
+    </div>
+
+  </div><!--中間區塊結束-->
+  
+  <div data-role="footer" data-position="fixed"><!--下方區塊div-->
+
+	
+	<h4>
+
+	<div id="nomember">
+
+	<a href="li/login.html" data-role="button" data-theme="a">登入/註冊會員</a>
+
+	</div>
+	
+	<div id="member" style="display:none;">
+
+	<a href="li/logout.html" data-role="button" data-theme="a">登出</a>
+
+	</div>	
+
+	</h4>
+	
+
+	
+
+  </div><!--下方區塊結束-->
+  
+</div> 
+
+</body>
+</html>
