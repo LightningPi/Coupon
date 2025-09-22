@@ -1,7 +1,6 @@
 # Coupon
 大四畢業專題<br/>
 開發 Android，手機優惠券App作品(PHP)(七人合作)<br/>
-作品網址：https://lightningpi.website/app_php/app <br/>
 手機檔案位置：所有檔案，(不包括app_php資料夾)<br/>
 伺服器檔案位置：app_php資料夾<br/>
 資料庫檔案：coupon.sql <br/>
@@ -24,17 +23,3 @@ HTML5、CSS3、MySQL<br/>
 4.集券冊(已收藏優惠券列表)<br/>
 5.會員註冊、登入、登出<br/>
 6.問題回報(回報App問題、其他建議)<br/>
-<br/>
-<br/>
-三、系統展示方式調整說明：<br/>
-由於PhoneGap官方網站已關閉<br/>
-(PhoneGap不再提供服務)<br/>
-將大四專題舊有的Android手機程式碼內容<br/>
-修改成新架設的伺服器IP後<br/>
-發現Android apk均無法順利運作<br/>
-無法以手機程式方式呈現<br/>
-<br/>
-基於PhoneGap跨平台特性<br/>
-原本在Android使用的相同程式碼<br/>
-也可以透過網頁方式運作呈現<br/>
-故改以線上網頁方式，呈現手機程式的功能<br/>
